@@ -24,9 +24,13 @@ function App() {
 
   return (
     <div className="App">
+
       <h1>My balance is  : {coin} rupees</h1>
       <button onClick={increseHandler}>Increase</button>
       <button onClick={()=>SetReset(!reset)}>Reset</button>
+      <NavBar></NavBar>
+      <Strip></Strip>
+
     </div>
   );
 }
