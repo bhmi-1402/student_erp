@@ -9,6 +9,9 @@ module.exports = {
         tertiary: "#5DEBD7",
         alter: "#2D9596",
       },
+      fontFamily:{
+        bhoomi : ["Montserrat", "sans-serif"]
+      }
     },
   },
   plugins: [],

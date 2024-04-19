@@ -1,6 +1,8 @@
 .home-strip{
     display: grid;
     width: 100vw;
+    box-sizing: border-box;
+    overflow-x:hidden ;
     height: 120px;
     grid-template-columns: 6fr 3fr;
     border-bottom: 1px solid lightgray;
