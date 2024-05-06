@@ -50,7 +50,7 @@ const Present = ()=>{
               <TableCell align="left">{row.subject}</TableCell>
               <TableCell align="right">{row.totalClass}</TableCell>
               <TableCell align="right">{row.marked}</TableCell>
-              <TableCell align="right"q >{row.percentage}</TableCell>
+              <TableCell align="right">{row.percentage}</TableCell>
             </TableRow>
           ))}
         </TableBody>

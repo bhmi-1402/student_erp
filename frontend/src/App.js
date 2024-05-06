@@ -18,6 +18,7 @@ function App() {
       <NavBar></NavBar>
       <Strip></Strip>
       <Present></Present>
+      
     </div>
   );
 }
