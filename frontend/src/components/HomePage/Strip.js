@@ -1,6 +1,6 @@
 import './Strip.css'
-import profilepic from './../static/jssaten.jpeg'
-import logo from './../static/eduportal.jpeg';
+import profilepic from '../../assets/jssaten.jpeg'
+import logo from '../../assets/eduportal.jpeg';
 const Strip = ()=>{
     return <>
     <div className="home-strip ">
