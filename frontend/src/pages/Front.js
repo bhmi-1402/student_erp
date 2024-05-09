@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Container, Grid, Box, Button } from '@mui/material';
 import styled from 'styled-components';
-import Students from "../assets/students.svg";
+import Students from "../assets/school-software.png";
 import { LightPurpleButton } from '../components/buttonStyles.js';
 
 const Front = () => {
@@ -17,7 +17,7 @@ const Front = () => {
                         <StyledTitle>
                             Welcome to
                             <br />
-                            School Management
+                            ERP Management
                             <br />
                             System
                         </StyledTitle>

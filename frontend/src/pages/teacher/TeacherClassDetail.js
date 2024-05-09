@@ -13,13 +13,13 @@ const TeacherClassDetails = () => {
     const dispatch = useDispatch();
     const {  loading, error, getresponse } = useSelector((state) => state.sclass);
 
-    // const { currentUser } = useSelector((state) => state.user);
-    // const classID = currentUser.teachSclass?._id
-    // const subjectID = currentUser.teachSubject?._id
+    const { currentUser } = useSelector((state) => state.user);
+    const classID = currentUser.teachSclass?._id
+    const subjectID = currentUser.teachSubject?._id
 
-    // useEffect(() => {
-    //     dispatch(getClassStudents(classID));
-    // }, [dispatch, classID])
+    useEffect(() => {
+        dispatch(getClassStudents(classID));
+    }, [dispatch, classID])
 
     if (error) {
         console.log(error)
