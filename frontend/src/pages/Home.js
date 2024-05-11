@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import Students from "../assets/school-software.png";
 import { LightPurpleButton } from '../components/buttonStyles.js';
 
-const Front = () => {
+const Home = () => {
     return (
         <StyledContainer>
             <Grid container spacing={0}>
@@ -53,7 +53,7 @@ const Front = () => {
     );
 };
 
-export default Front;
+export default Home;
 
 const StyledContainer = styled(Container)`
   display: flex;
