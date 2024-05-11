@@ -1,13 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-
 import { Button, Grid, Box, Typography, Paper, Checkbox, FormControlLabel, TextField, CssBaseline, IconButton, InputAdornment, CircularProgress, Backdrop } from '@mui/material';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Visibility, VisibilityOff } from '@mui/icons-material';
 import bgpic from "../assets/designlogin.jpg"
 import { LightPurpleButton } from '../components/buttonStyles';
 import styled from 'styled-components';
-import Popup from '../components/Popup';
+
 
 const defaultTheme = createTheme();
 
@@ -37,7 +35,7 @@ const LoginPage = () => {
                             Welcome back! Please enter your details
                         </Typography>
                         <Box component="form" noValidate  sx={{ mt: 2 }}>
-                            {role === "Student" ? (
+                           
                                 <>
                                     <TextField
                                         margin="normal"
@@ -49,9 +47,7 @@ const LoginPage = () => {
                                         autoComplete="off"
                                         type="number"
                                         autoFocus
-                                        error={rollNumberError}
-                                        helperText={rollNumberError && 'Roll Number is required'}
-                                        onChange={handleInputChange}
+                                        
                                     />
                                     <TextField
                                         margin="normal"
@@ -62,12 +58,10 @@ const LoginPage = () => {
                                         name="studentName"
                                         autoComplete="name"
                                         autoFocus
-                                        error={studentNameError}
-                                        helperText={studentNameError && 'Name is required'}
-                                        onChange={handleInputChange}
+                                       
                                     />
                                 </>
-                            ) : (
+                            
                                 <TextField
                                     margin="normal"
                                     required
@@ -77,37 +71,19 @@ const LoginPage = () => {
                                     name="email"
                                     autoComplete="email"
                                     autoFocus
-                                    error={emailError}
-                                    helperText={emailError && 'Email is required'}
-                                    onChange={handleInputChange}
+                                    
                                 />
-                            )}
+                            
                             <TextField
                                 margin="normal"
                                 required
                                 fullWidth
                                 name="password"
                                 label="Password"
-                                // type={toggle ? 'text' : 'password'}
+                                
                                 id="password"
                                 autoComplete="current-password"
-                                // error={passwordError}
-                                // helperText={passwordError && 'Password is required'}
-                                
-                                // InputProps={{
-                                //     endAdornment: (
-                                //         <InputAdornment position="end">
-                                //             <IconButton onClick={() => setToggle(!toggle)}>
-                                //                 {toggle ? (
-                                //                     <Visibility />
-                                //                 ) : (
-                                //                     <VisibilityOff />
-                                //                 )}
-                                //             </IconButton>
-                                //         </InputAdornment>
-                                //     ),
-                                // }}
-                            />
+                                ></TextField>
                             <Grid container sx={{ display: "flex", justifyContent: "space-between" }}>
                                 <FormControlLabel
                                     control={<Checkbox value="remember" color="primary" />}

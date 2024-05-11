@@ -64,21 +64,12 @@ function App() {
         <a href={"/TeacherViewStudent"} className="mx-2">
           TeacherViewStudent
         </a>
-        <a href={"/TeacherClassDetail"} className="mx-2">
-          TeacherClassDetail
-        </a>
-        <a href={"/TeacherAttendance"} className="mx-2">
-          TeacherAttendance
-        </a>
+        
+        
         <a href={"/StudentAttendance"} className="mx-2">
           StudentAttendance
         </a>
-        <a href={"/StudentAttendance"} className="mx-2">
-          StudentAttendance
-        </a>
-        <a href={"/StudentComplain"} className="mx-2">
-          StudentComplain
-        </a>
+        
         <a href={"/chooseUser"}>chooseUser</a>
       </div>
     </div>
