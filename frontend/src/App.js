@@ -18,6 +18,7 @@ import TeacherProfile from "./pages/teacher/TeacherProfile.js";
 import TeacherSideBar from "./pages/teacher/TeacherSideBar.js";
 import path from "./path.js";
 import AdminForm from "./pages/AdminForm.js";
+import AdminTeacher from "./pages/AdminTeacher.js";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         <Route path="/Logout" element={<Logout />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/adminform" element={<AdminForm></AdminForm>}></Route>
+        <Route path="/adminteacher" element={<AdminTeacher></AdminTeacher>}></Route>
       </Routes>
 
       <div>
