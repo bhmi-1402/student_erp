@@ -15,3 +15,34 @@
     color: rgb(59, 59, 59);
     margin-bottom: 10px;
 }
+.addLecture{
+    /* border: 1px solid red; */
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.addLecture > p{
+    /* border: 1px solid green; */
+    display: flex;
+    min-width: 50vw;
+    flex-direction: row;
+    max-width: 600px;
+    padding: 2px;
+    justify-content: space-between;
+}
+.admin-form-submit-button{
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+.attendence-name{
+    display: flex;
+    flex-direction: row;
+    padding: 4px;
+    gap: 5px;
+    margin-top:2px;
+    background-color: rgb(228, 228, 228);
+    justify-content: flex-start;
+    align-items: center;
+}
