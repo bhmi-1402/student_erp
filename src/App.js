@@ -20,6 +20,9 @@ import path from "./path.js";
 import AdminForm from "./pages/AdminForm.js";
 import AdminTeacher from "./pages/AdminTeacher.js";
 import TeacherAttendance from "./pages/teacher/TeacherAttendance.js";
+import Modal from "./components/common/Modal.js";
+import StudentDashboard from "./pages/student/StudentDashboard.js";
+import StudentMarks from "./pages/student/StudentMarks.js";
 
 function App() {
   return (
@@ -27,23 +30,26 @@ function App() {
 
       <NavBar></NavBar>
       <Routes>
-        {/* <Route path='/present' element={<Present/>}></Route> */}
-        <Route path="/home" element={<Home/>}></Route>
-        <Route path="/chooseUser" element={<ChooseUser />}></Route>
+        <Route path="/" index element={<Home/>}></Route>
+        <Route path="/dashboard/student" element={<StudentDashboard></StudentDashboard>} ></Route>
+        <Route path="/choose_user" element={<ChooseUser />}></Route>
+        <Route path="/login" element={<Login />}></Route>
+        <Route path="/student/attendance" element={<StudentAttendance />}></Route>
+        <Route path="/student/marks" element={<StudentMarks/>}></Route>
+  
         <Route path="/StudentSidebar" element={<StudentSideBar />}></Route>
         <Route path="/StudentSubjects" element={<StudentSubjects />}></Route>
         <Route path="/StudentProfile" element={<StudentProfile />}></Route>
         <Route path="/teacherAttendence" element={<TeacherAttendance></TeacherAttendance>}></Route>
-        <Route path="/StudentAttendance" element={<StudentAttendance />}></Route>
         <Route path="/TeacherSideBar" element={<TeacherSideBar />}></Route>
         <Route path="/TeacherProfile" element={<TeacherProfile />}></Route>
         <Route path="/Logout" element={<Logout />}></Route>
-        <Route path="/login" element={<Login />}></Route>
         <Route path="/adminform" element={<AdminForm></AdminForm>}></Route>
         <Route path="/adminteacher" element={<AdminTeacher></AdminTeacher>}></Route>
+        <Route path="/modal" element={<Modal></Modal>}></Route>
       </Routes>
 
-      <div>
+      {/* <div>
         <a href={"/login"} className="mx-2">
           Login
         </a>
@@ -63,7 +69,7 @@ function App() {
           StudentAttendance
         </a>
         <a href={"/chooseUser"}>chooseUser</a>
-      </div>
+      </div> */}
     </div>
   );
 }

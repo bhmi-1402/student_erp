@@ -8,13 +8,11 @@ const StudentProfile = () => {
 
   if (response) { console.log(response) }
   else if (error) { console.log(error) }
-
 //   const sclassName = currentUser.sclassName
 //   const studentSchool = currentUser.school
-
   return (
     <>
-      <Container maxWidth="md">
+      <Container maxWidth="mt-10">
         <StyledPaper elevation={3}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
@@ -34,7 +32,7 @@ const StudentProfile = () => {
             <Grid item xs={12}>
               <Box display="flex" justifyContent="center">
                 <Typography variant="subtitle1" component="p" textAlign="center">
-                  Student Roll No:
+                  Student Roll No: 2100911540029
                    {/* {currentUser.rollNum} */}
                 </Typography>
               </Box>
@@ -42,7 +40,7 @@ const StudentProfile = () => {
             <Grid item xs={12}>
               <Box display="flex" justifyContent="center">
                 <Typography variant="subtitle1" component="p" textAlign="center">
-                  Class: 
+                  Class: Computer Science CS DS
                   {/* {sclassName.sclassName} */}
                 </Typography>
               </Box>

@@ -1,0 +1,35 @@
+.dashboard{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    padding: 15px;
+    
+    background-color: #255f91;
+}
+.dashboard > *{
+    /* border: 1px solid red; */
+}
+.dashboard-item{
+    width: 200px;
+    border-radius: 8px;
+    height: 230px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 1px solid lightgray;
+    background-color: white;
+}
+.dashboard-item > img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 5px;
+}
+.dashboard-item > p {
+    color: white;
+    color: #255f91;
+    font-size: 1.4rem;
+    font-weight: 600;
+    /* color: gray; */
+}

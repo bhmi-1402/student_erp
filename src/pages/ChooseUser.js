@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate , Link } from 'react-router-dom';
 import {
   Grid,
   Paper,
@@ -7,10 +7,12 @@ import {
   Container,
   CircularProgress,
   Backdrop,
+  Avatar
 } from '@mui/material';
-import { AccountCircle, School, Group } from '@mui/icons-material';
 import styled from 'styled-components';
-import Popup from '../components/Popup';
+import admin_profile from './../assets/admin.jpeg'
+import student_profile from './../assets/student.jpeg'
+import teacher_profile from './../assets/teacher.jpeg'
 
 const ChooseUser = () => {
   
@@ -21,40 +23,46 @@ const ChooseUser = () => {
           <Grid item xs={12} sm={6} md={4}>
             <div >
               <StyledPaper elevation={3}>
-                <Box mb={2}>
-                  <AccountCircle fontSize="large" />
-                </Box>
+              <Link to="/login?user=admin">
+               <div className="flex justify-center items-center">
+                    <img className='choose_user_image' src={admin_profile} ></img>
+                </div>
                 <StyledTypography>
                   Admin
                 </StyledTypography>
                 Login as an administrator to access the dashboard to manage app data.
+               </Link>
               </StyledPaper>
             </div>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
             <StyledPaper elevation={3}>
-              <div >
-                <Box mb={2}>
-                  <School fontSize="large" />
-                </Box>
-                <StyledTypography>
+              <Link to="/login?user=student">
+              <div>
+                <div className="flex justify-center items-center">
+                    <img className='choose_user_image' src={student_profile} ></img>
+                </div>
+                <StyledTypography className='text-bold'>
                   Student
                 </StyledTypography>
                 Login as a student to explore course materials and assignments.
               </div>
+              </Link>
             </StyledPaper>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
             <StyledPaper elevation={3}>
+             <Link to="/login?user=teacher">
               <div>
-                <Box mb={2}>
-                  <Group fontSize="large" />
-                </Box>
+              <div className="flex justify-center items-center">
+                    <img className='choose_user_image' src={teacher_profile} ></img>
+                </div>
                 <StyledTypography>
                   Teacher
                 </StyledTypography>
                 Login as a teacher to create courses, assignments, and track student progress.
               </div>
+              </Link>
             </StyledPaper>
           </Grid>
         </Grid>
@@ -74,7 +82,7 @@ const ChooseUser = () => {
 export default ChooseUser;
 
 const StyledContainer = styled.div`
-  background: linear-gradient(to bottom, #411d70, #19118b);
+  background: white;
   height: 120vh;
   display: flex;
   justify-content: center;
