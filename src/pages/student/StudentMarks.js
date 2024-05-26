@@ -6,7 +6,7 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
-import Strip from '../../components/HomePage/Strip';
+import Strip from '../../components/common/Strip';
 import {Select} from 'antd'
 function createData(subjectCode , subject , totalMarks , obtained , percentage) {
     return { subjectCode , subject , totalMarks , obtained , percentage };

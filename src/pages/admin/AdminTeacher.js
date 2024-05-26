@@ -9,7 +9,7 @@ import {
   LinearProgress,
   Chip,
 } from "@mui/material";
-import path from "../path";
+import path from "../../path";
 import axios from "axios";
 // import './AdminTeacher.css'
 

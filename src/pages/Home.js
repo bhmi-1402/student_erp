@@ -26,6 +26,12 @@ const Home = () => {
                             Seamlessly track attendance, assess performance, and provide feedback.
                             Access records, view marks, and communicate effortlessly.
                         </StyledText>
+                        <StyledText>
+                            For Students : Check  Attendance,Marks and Pay Fees with register complaint along with Suggestion
+                        </StyledText>
+                        <StyledText>
+                            For Teacher : Mark Attendance,Update Result,Report A Student, File Suggestion
+                        </StyledText>
                         <StyledBox>
                             <StyledLink to="/choose_user">
                                 <LightPurpleButton variant='outlined' fullWidth>

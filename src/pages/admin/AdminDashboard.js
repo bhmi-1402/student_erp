@@ -8,46 +8,37 @@ import fees_image from './../../assets/fees.jpeg'
 import feedback from './../../assets/feedback.jpeg'
 import form from './../../assets/form.jpeg'
 import { Link } from 'react-router-dom';
-const StudentDashboard = ()=>{
-    
+const AdminDashboard = ()=>{
     useEffect(()=>{
-
     },[]);
-    
     return <>
         <Strip></Strip>
         <div className='dashboard'>
-                <Link className='dashboard-item' to='/student/attendance'>
+                <Link className='dashboard-item' to='/admin/add_student'>
                     <img
                         src={attendance_image}
                     ></img>
-                    <p>Attendance</p>
+                    <p>Add Student</p>
                 </Link>
-                <Link className='dashboard-item' to='/student/marks'>
+                <Link className='dashboard-item' to='/admin/add_Teacher'>
                     <img
-                        src={marks_image}
+                        src={attendance_image}
                     ></img>
-                    <p>Marks</p>
+                    <p>Add Teacher</p>
                 </Link>
-                <div className='dashboard-item'>
+                <Link className='dashboard-item' to='/admin/add_class'>
                     <img
-                        src={fees_image}
+                        src={attendance_image}
                     ></img>
-                    <p>Fees</p>
-                </div>
-                <div className='dashboard-item'>
+                    <p>Add Class</p>
+                </Link>
+                <Link className='dashboard-item' to='/admin/send_notification'>
                     <img
-                        src={feedback}
+                        src={attendance_image}
                     ></img>
-                    <p>Feedback</p>
-                </div>
-                <Link className='dashboard-item' to={"/student/register_complaint"}>
-                    <img
-                        src={form}
-                    ></img>
-                    <p>Grievence</p>
+                    <p>Send Notice</p>
                 </Link>
         </div>
     </>;
 }
-export default StudentDashboard;
+export default AdminDashboard;

@@ -3,12 +3,11 @@ import "./App.css";
 
 import axios from "axios";
 import { Route, Routes } from "react-router-dom";
-import Strip from "./components/HomePage/Strip";
+import Strip from "./components/common/Strip.js";
 import NavBar from "./components/common/Navbar";
 import ChooseUser from "./pages/ChooseUser";
 import Home from "./pages/Home.js";
 import Login from "./pages/Login.js";
-import Logout from "./pages/Logout.js";
 // import Present from './pages/Present.js';
 import StudentAttendance from "./pages/student/StudentAttendence.js";
 import StudentProfile from "./pages/student/StudentProfile";
@@ -17,12 +16,18 @@ import StudentSubjects from "./pages/student/StudentSubjects";
 import TeacherProfile from "./pages/teacher/TeacherProfile.js";
 import TeacherSideBar from "./pages/teacher/TeacherSideBar.js";
 import path from "./path.js";
-import AdminForm from "./pages/AdminForm.js";
-import AdminTeacher from "./pages/AdminTeacher.js";
+import AdminForm from "./pages/admin/AdminForm.js";
+import AdminAddClass from "./pages/admin/AdminAddClass.js";
+import AdminTeacher from "./pages/admin/AdminTeacher.js";
 import TeacherAttendance from "./pages/teacher/TeacherAttendance.js";
 import Modal from "./components/common/Modal.js";
 import StudentDashboard from "./pages/student/StudentDashboard.js";
 import StudentMarks from "./pages/student/StudentMarks.js";
+import AdminDashboard from "./pages/admin/AdminDashboard.js";
+import TeacherDashboard from "./pages/teacher/TeacherDashboard.js";
+import AdminAddNotice from "./pages/admin/AdminAddNotice.js";
+import StudentAddComplaint from "./pages/student/StudentAddComplaint.js";
+import TeacherAddMarks from "./pages/teacher/TeacherAddMarks.js";
 
 function App() {
   return (
@@ -30,23 +35,37 @@ function App() {
 
       <NavBar></NavBar>
       <Routes>
+        {/* Common Routes */}
         <Route path="/" index element={<Home/>}></Route>
-        <Route path="/dashboard/student" element={<StudentDashboard></StudentDashboard>} ></Route>
         <Route path="/choose_user" element={<ChooseUser />}></Route>
         <Route path="/login" element={<Login />}></Route>
+        {/* Dashboard Routes */}
+        <Route path="/dashboard/admin" element={<AdminDashboard></AdminDashboard>} ></Route>
+        <Route path="/dashboard/teacher" element={<TeacherDashboard></TeacherDashboard>} ></Route>
+        <Route path="/dashboard/student" element={<StudentDashboard></StudentDashboard>} ></Route>
+        {/* Student Routes */}
         <Route path="/student/attendance" element={<StudentAttendance />}></Route>
         <Route path="/student/marks" element={<StudentMarks/>}></Route>
-  
+        <Route path="/student/register_complaint" element={<StudentAddComplaint/>}></Route>
+        
+        {/* Teacher Routes */}
+        <Route path="/teacher/attendance" element={<TeacherAttendance></TeacherAttendance>}></Route>
+        <Route path="/teacher/add_marks" element={<TeacherAddMarks></TeacherAddMarks>}></Route>
+        {/* Admin Routes */}
+        <Route path="/admin/add_student" element={<AdminForm></AdminForm>}></Route>
+        <Route path="/admin/add_teacher" element={<AdminTeacher></AdminTeacher>}></Route>
+        <Route path="/admin/add_class" element={<AdminAddClass></AdminAddClass>}></Route>
+        <Route path='/admin/send_notification' element={<AdminAddNotice></AdminAddNotice>}></Route>
+
+
+
+        {/* Remaining For Evalutaion */}
         <Route path="/StudentSidebar" element={<StudentSideBar />}></Route>
         <Route path="/StudentSubjects" element={<StudentSubjects />}></Route>
         <Route path="/StudentProfile" element={<StudentProfile />}></Route>
-        <Route path="/teacherAttendence" element={<TeacherAttendance></TeacherAttendance>}></Route>
         <Route path="/TeacherSideBar" element={<TeacherSideBar />}></Route>
         <Route path="/TeacherProfile" element={<TeacherProfile />}></Route>
-        <Route path="/Logout" element={<Logout />}></Route>
-        <Route path="/adminform" element={<AdminForm></AdminForm>}></Route>
-        <Route path="/adminteacher" element={<AdminTeacher></AdminTeacher>}></Route>
-        <Route path="/modal" element={<Modal></Modal>}></Route>
+
       </Routes>
 
       {/* <div>

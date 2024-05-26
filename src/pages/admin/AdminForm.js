@@ -1,9 +1,9 @@
 import { useState } from "react";
-import path from "../path";
+import path from "../../path";
 import axios from "axios";
 import { Password } from "@mui/icons-material";
 import { Button, TextField,Select,MenuItem, FormControl, InputLabel, LinearProgress} from "@mui/material";
-import './AdminForm.css';
+import './../AdminForm.css';
 
 const AdminForm = ()=>{
     const [load,setLoad] = useState(false);
