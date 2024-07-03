@@ -29,12 +29,12 @@ const StudentDashboard = ()=>{
                     ></img>
                     <p>Marks</p>
                 </Link>
-                <div className='dashboard-item'>
+                <Link className='dashboard-item' to='/student/fees'>
                     <img
                         src={fees_image}
                     ></img>
                     <p>Fees</p>
-                </div>
+                </Link>
                 <div className='dashboard-item'>
                     <img
                         src={feedback}

@@ -28,23 +28,27 @@ import TeacherDashboard from "./pages/teacher/TeacherDashboard.js";
 import AdminAddNotice from "./pages/admin/AdminAddNotice.js";
 import StudentAddComplaint from "./pages/student/StudentAddComplaint.js";
 import TeacherAddMarks from "./pages/teacher/TeacherAddMarks.js";
+import StudentFees from "./pages/student/StudentFees.js";
+import NotificationPanel from "./components/Notification.js/Notification.js";
+import AdminComplaints from "./pages/admin/AdminComplaints.js";
 
 function App() {
   return (
     <div className="App">
-
       <NavBar></NavBar>
       <Routes>
         {/* Common Routes */}
         <Route path="/" index element={<Home/>}></Route>
         <Route path="/choose_user" element={<ChooseUser />}></Route>
         <Route path="/login" element={<Login />}></Route>
+        <Route path='/notification' element={<NotificationPanel></NotificationPanel>}></Route>
         {/* Dashboard Routes */}
         <Route path="/dashboard/admin" element={<AdminDashboard></AdminDashboard>} ></Route>
         <Route path="/dashboard/teacher" element={<TeacherDashboard></TeacherDashboard>} ></Route>
         <Route path="/dashboard/student" element={<StudentDashboard></StudentDashboard>} ></Route>
         {/* Student Routes */}
         <Route path="/student/attendance" element={<StudentAttendance />}></Route>
+        <Route path="/student/fees" element={<StudentFees></StudentFees>}></Route>
         <Route path="/student/marks" element={<StudentMarks/>}></Route>
         <Route path="/student/register_complaint" element={<StudentAddComplaint/>}></Route>
         
@@ -56,7 +60,7 @@ function App() {
         <Route path="/admin/add_teacher" element={<AdminTeacher></AdminTeacher>}></Route>
         <Route path="/admin/add_class" element={<AdminAddClass></AdminAddClass>}></Route>
         <Route path='/admin/send_notification' element={<AdminAddNotice></AdminAddNotice>}></Route>
-
+        <Route path='/admin/complaints' element={<AdminComplaints></AdminComplaints>}></Route>
 
 
         {/* Remaining For Evalutaion */}

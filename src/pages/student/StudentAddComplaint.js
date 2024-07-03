@@ -42,7 +42,7 @@ const StudentAddComplaint = () => {
             backgroundColor: "whitesmoke",
           }}
           className="fullwidth"
-          placeholder={"To\nAdmin,\nGrievence Department,\nJSSATEN\nSubject : I have Suggestion\\Complaint regarding .....\nSir,\n    I want to say that..."}
+          placeholder={"To\nAdmin,\nGrievence Department,\nJSSATEN\nSubject : I have Suggestion\\Complaint regarding [TOPIC]\nSir,\n    I want to say that..."}
         />
       </div>
 

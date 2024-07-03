@@ -38,6 +38,12 @@ const AdminDashboard = ()=>{
                     ></img>
                     <p>Send Notice</p>
                 </Link>
+                <Link className='dashboard-item' to='/admin/complaints'>
+                    <img
+                        src={attendance_image}
+                    ></img>
+                    <p>Complaints</p>
+                </Link>
         </div>
     </>;
 }

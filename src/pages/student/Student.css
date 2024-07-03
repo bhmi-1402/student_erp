@@ -1,0 +1,39 @@
+.fees-form{
+    display: flex;
+    flex-direction: column;
+    padding: 12px;
+}
+.fees-bio{
+    /* border: 1px solid green; */
+    border-bottom: 1px solid gray;
+    display: grid;
+    padding-bottom:12px;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+}
+.fees-bio-field{
+    /* border: 1px solid red; */
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+}
+.fees-bio-field > p {
+    font-weight: 600;
+}
+.fees-bio-field > span{
+    color: gray;
+}
+.fees-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    gap: 12px;
+    flex-direction: column;
+}
+.fees-container > p {
+    font-weight: 600;
+    font-size: 1.6rem;
+}
+.fees-container > span{
+    color: gray;
+}
