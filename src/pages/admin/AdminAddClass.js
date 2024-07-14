@@ -1,5 +1,5 @@
-import './admin.css';
-import React, { useState } from "react";
+import "./admin.css";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   TextField,
@@ -16,17 +16,31 @@ import axios from "axios";
 
 const AdminAddClass = () => {
   const [data, setData] = useState({
-    name: "",
-    email: "",
-    password: "",
-    lectures: [],
+    Name: "",
+    Alias: "",
+    Subjects: [],
+    Semester: 1,
   });
 
-  const [lecture, setLecture] = useState({
-    branch: "",
-    semester: "",
-    subject: "",
+  const [subjects, setSubjects] = useState([]);
+  const [currentSubject, setCurrentSubject] = useState(false);
+  const [subject, SetSubject] = useState({
+    subjectName: "",
+    alias: "",
   });
+
+  const getSubject = async () => {
+    try {
+      const subjectsResponse = await axios.get(path + "admin/subject");
+      setSubjects(subjectsResponse.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    getSubject();
+  }, []);
 
   const onChangeHandler = (event) => {
     const name = event.target.name;
@@ -37,136 +51,164 @@ const AdminAddClass = () => {
   const handleSubmit = async () => {
     try {
       console.log(data);
-      const res=await axios.post(path+'admin/addToTeachers',data)
-      if(res.data.error){
-          alert("Error");
+      const res = await axios.post(path + "admin/addClass", data);
+      setData({
+        Name: "",
+        Alias: "",
+        Subjects: [],
+        Semester: 1,
+      });
+      if (res.data.error) {
+        alert("Error");
       }
     } catch (error) {
       alert("Some Error Occured");
     }
   };
 
-  const addLectureHandler = () => {
-    let lecturesArray = data.lectures;
-    lecturesArray.push(lecture);
-    setData({ ...data, lectures: lecturesArray });
-    setLecture({
-      branch: "",
-      semester: "",
-      subject: "",
-    });
+  const handleSubject = async () => {
+    try {
+      const resp = await axios.post(path + "admin/addSubject", {
+        ...subject,
+      });
+      SetSubject({
+        subjectName: "",
+        alias: "",
+      });
+      console.log(resp);
+    } catch (err) {}
   };
 
   return (
     <div>
-      <div className="adminform-title">Add Teacher Data to Database</div>
+      <div className="adminform-title">Add Class Data to Database</div>
       <div className="adminform">
         <TextField
           id="outlined-basic"
           label="Name"
           variant="outlined"
-          name="name"
-          value={data.name}
+          name="Name"
+          value={data.Name}
           onChange={onChangeHandler}
         />
         <TextField
           id="outlined-basic"
-          label="Email"
-          name="email"
+          label="Alias"
+          name="Alias"
           variant="outlined"
-          value={data.email}
+          value={data.Alias}
           onChange={onChangeHandler}
         />
-        <TextField
-          id="outlined-basic"
-          name="password"
-          label="Password"
-          variant="outlined"
-          value={data.password}
-          onChange={onChangeHandler}
-        />
-        <div></div>
-        <div>Lecture Details Details</div>
-        <div></div>
-        <hr></hr>
-        <hr></hr>
 
         <FormControl>
-          <InputLabel>Class</InputLabel>
-          <Select
-            label="Branch"
-            value={lecture.branch}
-            onChange={(e) => setLecture({ ...lecture, branch: e.target.value })}
-          >
-            <MenuItem value={"cs"}>Computer Science</MenuItem>
-            <MenuItem value={"it"}>Information Technology</MenuItem>
-            <MenuItem value={"ece"}>Electronics</MenuItem>
-            <MenuItem value={"ee"}>Electrical</MenuItem>
-            <MenuItem value={"eee"}>Electrical & Electronics</MenuItem>
-            <MenuItem value={"civil"}>Civil</MenuItem>
-            <MenuItem value={"me"}>Mechanical</MenuItem>
-          </Select>
-        </FormControl>
-
-        <FormControl>
-          <InputLabel>Current Semester</InputLabel>
+          <InputLabel>Semester</InputLabel>
           <Select
             label="Semester"
-            value={lecture.semester}
-            onChange={(e) =>
-              setLecture({ ...lecture, semester: e.target.value })
-            }
+            value={data.Semester}
+            onChange={(e) => setData({ ...data, Semester: e.target.value })}
           >
-            <MenuItem value={"1"}>First</MenuItem>
-            <MenuItem value={"2"}>Second</MenuItem>
-            <MenuItem value={"3"}>Third</MenuItem>
-            <MenuItem value={"4"}>Fourth</MenuItem>
-            <MenuItem value={"5"}>Fifth</MenuItem>
-            <MenuItem value={"6"}>Sixth</MenuItem>
-            <MenuItem value={"7"}>Seventh</MenuItem>
-            <MenuItem value={"8"}>Eight</MenuItem>
+            <MenuItem value={1}>First</MenuItem>
+            <MenuItem value={2}>Second</MenuItem>
+            <MenuItem value={3}>Third</MenuItem>
+            <MenuItem value={4}>Fourth</MenuItem>
+            <MenuItem value={5}>Fifth</MenuItem>
+            <MenuItem value={6}>Sixth</MenuItem>
+            <MenuItem value={7}>Seventh</MenuItem>
+            <MenuItem value={8}>Eight</MenuItem>
           </Select>
         </FormControl>
-        <TextField
-          name="subject"
-          onChange={(e) =>
-            setLecture({ ...lecture, subject: e.target.value.toLowerCase() })
-          }
-          value={lecture.subject}
-          label="Subject"
-        ></TextField>
+
+        <div></div>
+        <div>Add Subject One by One</div>
+        <div></div>
+        <hr></hr>
+        <hr></hr>
+
+        <FormControl>
+          <InputLabel>Subject</InputLabel>
+          <Select
+            label="Subjects"
+            value={currentSubject.Name}
+            onChange={(e) => setCurrentSubject(e.target.value)}
+          >
+            {subjects.map((sub) => {
+              return <MenuItem value={sub}>{sub.Name}</MenuItem>;
+            })}
+          </Select>
+        </FormControl>
+
         <div></div>
         <div>
-          <Button onClick={addLectureHandler} variant="contained">
-            Add Lecture
+          <Button
+            onClick={() => {
+              if (currentSubject) {
+                setData({
+                  ...data,
+                  Subjects: [...data.Subjects, currentSubject],
+                });
+                setCurrentSubject({});
+              }
+            }}
+            variant="contained"
+          >
+            Add Subject
           </Button>
         </div>
 
         <div></div>
       </div>
-      <div className="addLecture">
+
+      <div className="addLecture mb-6">
         <p className="bg-gray-200">
-          <span className="mx-2">Branch</span>
-          <span className="mx-2">Semester</span>
           <span className="mx-2">Subject</span>
+          <span className="mx-2">Code</span>
+          {/* <span className="mx-2">Subject</span> */}
         </p>
-        {data.lectures.map((lec) => {
+        {data.Subjects.map((lec) => {
           return (
             <p>
-              <span className="mx-2">{lec.branch?.toUpperCase()}</span>
-              <span className="mx-2">{lec.semester}</span>
-              <span className="mx-2">{lec.subject?.toUpperCase()}</span>
+              <span className="mx-2">{lec.Name?.toUpperCase()}</span>
+              <span className="mx-2">{lec.Alias}</span>
+              {/* <span className="mx-2">{lec.subject?.toUpperCase()}</span> */}
             </p>
           );
         })}
       </div>
+
       <div className="admin-form-submit-button">
         <Button
           variant="contained"
           onClick={handleSubmit}
           sx={{ width: "200px" }}
         >
-          Add Teacher
+          Add Class to Database
+        </Button>
+      </div>
+
+      <div className="adminform-title mt-4">Add Subject Data to Database</div>
+
+      <div className="adminform">
+        <TextField
+          name="subject"
+          onChange={(e) =>
+            SetSubject({ ...subject, subjectName: e.target.value })
+          }
+          value={subject.subjectName}
+          label="Subject"
+        ></TextField>
+        <TextField
+          name="subject"
+          onChange={(e) => SetSubject({ ...subject, alias: e.target.value })}
+          value={subject.alias}
+          label="Alias"
+        ></TextField>
+
+        <Button
+          variant="contained"
+          onClick={handleSubject}
+          sx={{ width: "200px" }}
+        >
+          Add Subjects
         </Button>
       </div>
     </div>

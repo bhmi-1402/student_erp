@@ -29,6 +29,12 @@ const TeacherDashboard = ()=>{
                     ></img>
                     <p>Add Marks</p>
                 </Link>
+                <Link className='dashboard-item' to={"/student/register_complaint"}>
+                    <img
+                        src={attendance_image}
+                    ></img>
+                    <p>Grievence</p>
+                </Link>
                 
         </div>
     </>;

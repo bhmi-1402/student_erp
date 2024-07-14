@@ -1,7 +1,7 @@
 import { useState } from "react";
 import path from "../../path";
 import axios from "axios";
-import { Password } from "@mui/icons-material";
+import { Class, Password } from "@mui/icons-material";
 import { Button, TextField,Select,MenuItem, FormControl, InputLabel, LinearProgress} from "@mui/material";
 import './../AdminForm.css';
 
@@ -25,7 +25,19 @@ const AdminForm = ()=>{
     const handleSubmit = async ()=>{
         setLoad(true);
         try{
-            const res = await axios.post(path+'admin/addToStudents',data);
+            const res = await axios.post(path+'admin/addToStudents',{
+                FullName : data.name,
+                Email:data.email,
+                Password : data.password,
+                RollNumber : data.rollNumber,
+                CurrentSemester : data.currentSemester,
+                'Class': data.class,
+                Address : "NA",
+                Gender : data.gender,
+                Branch : 'NA',
+                DateOfBirth : NaN,
+                PhoneNumber : "NA"
+            });
             if(res.data.error){
                 alert("Some Error Occured At Backend");
             }
@@ -58,25 +70,25 @@ return <>
     <MenuItem value={"eee"}>Electrical & Electronics</MenuItem>
     <MenuItem value={"civil"}>Civil</MenuItem>
     <MenuItem value={"me"}>Mechanical</MenuItem>
-  
   </Select>
   </FormControl>
 {/* <TextField id="outlined-basic" label="Current Semester" variant="outlined" /> */}
 <FormControl>
+
 <InputLabel>Current Semester</InputLabel>
 <Select
     label="Current Semester"
     value={data.currentSemester} 
     onChange={e=>setData({...data,currentSemester:e.target.value})}
     >
-    <MenuItem value={"1"}>First</MenuItem>
-    <MenuItem value={"2"}>Second</MenuItem>
-    <MenuItem value={"3"}>Third</MenuItem>
-    <MenuItem value={"4"}>Fourth</MenuItem>
-    <MenuItem value={"5"}>Fifth</MenuItem>
-    <MenuItem value={"6"}>Sixth</MenuItem>
-    <MenuItem value={"7"}>Seventh</MenuItem>
-    <MenuItem value={"8"}>Eight</MenuItem>
+    <MenuItem value={1}>First</MenuItem>
+    <MenuItem value={2}>Second</MenuItem>
+    <MenuItem value={3}>Third</MenuItem>
+    <MenuItem value={4}>Fourth</MenuItem>
+    <MenuItem value={5}>Fifth</MenuItem>
+    <MenuItem value={6}>Sixth</MenuItem>
+    <MenuItem value={7}>Seventh</MenuItem>
+    <MenuItem value={8}>Eight</MenuItem>
   </Select>
   </FormControl>
 

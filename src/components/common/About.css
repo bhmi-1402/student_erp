@@ -1,0 +1,64 @@
+.about-main-container{
+    display: flex;
+    padding: 10px 2px;
+    justify-content: center;
+    flex-direction: column;
+}
+.about-alpha{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.about-main-container > div > h1 {
+    font-size: 2rem;
+    font-weight: 500;
+    width: 100%;
+    text-align: center;
+}
+.about-alpha > p {
+    margin-top: 30px;
+}
+.about-main-container > div > span {
+    font-weight: 500;
+    color: darkgray;
+}
+.about-beta{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.about-tech-card-container{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+.about-tech-card{
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 300px;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 100px auto;
+    grid-template-rows: 28px auto;
+    height: 100px;
+}
+.about-tech-card > p{
+    font-size: 28px;
+    font-weight: 500;
+}
+.about-tech-card > span {
+    color: gray;
+}
+.about-tech-card > img {
+    grid-row-start: 1;
+    grid-row-end: 3;
+    height: 100px;
+    width: 100px;
+    border: 1px solid red;
+}
+.about-beta > span {
+    margin-top: 20px;
+    font-size: 1.5rem;
+}

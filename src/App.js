@@ -31,6 +31,8 @@ import TeacherAddMarks from "./pages/teacher/TeacherAddMarks.js";
 import StudentFees from "./pages/student/StudentFees.js";
 import NotificationPanel from "./components/Notification.js/Notification.js";
 import AdminComplaints from "./pages/admin/AdminComplaints.js";
+import Footer from "./components/common/Footer.js";
+import About from "./components/common/About.js";
 
 function App() {
   return (
@@ -41,6 +43,7 @@ function App() {
         <Route path="/" index element={<Home/>}></Route>
         <Route path="/choose_user" element={<ChooseUser />}></Route>
         <Route path="/login" element={<Login />}></Route>
+        <Route path="/about" element={<About></About>}></Route>
         <Route path='/notification' element={<NotificationPanel></NotificationPanel>}></Route>
         {/* Dashboard Routes */}
         <Route path="/dashboard/admin" element={<AdminDashboard></AdminDashboard>} ></Route>
@@ -71,7 +74,7 @@ function App() {
         <Route path="/TeacherProfile" element={<TeacherProfile />}></Route>
 
       </Routes>
-
+      <Footer></Footer>
       {/* <div>
         <a href={"/login"} className="mx-2">
           Login
