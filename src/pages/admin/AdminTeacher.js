@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Button,
   TextField,
@@ -15,16 +15,22 @@ import axios from "axios";
 
 const AdminTeacher = () => {
   const [data, setData] = useState({
-    name: "",
-    email: "",
-    password: "",
-    lectures: [],
+    FullName: "",
+    Email: "",
+    Password: "",
+    Lectures: [],
+    PhoneNumber : "",
+    Gender : "",
+    isAdmin:false
   });
+  const [error,seterror] = useState("");
+  const [subjectAvailable,setSubjectAvailable] = useState(false);
+  const [classSelected,setClassSelected] = useState([]);
 
   const [lecture, setLecture] = useState({
-    branch: "",
-    semester: "",
-    subject: "",
+    Branch:[],
+    Semester:"",
+    Subject:""
   });
 
   const onChangeHandler = (event) => {
@@ -36,25 +42,50 @@ const AdminTeacher = () => {
   const handleSubmit = async () => {
     try {
       console.log(data);
+      if(data.Lectures.length == 0 ) return;
       const res=await axios.post(path+'admin/addToTeachers',data)
       if(res.data.error){
           alert("Error");
+      }else{
+         setData({
+          FullName: "",
+          Email: "",
+          Password: "",
+          Lectures: [],
+          PhoneNumber : "",
+          Gender : "Male",
+          isAdmin:false
+         })
       }
     } catch (error) {
       alert("Some Error Occured");
     }
   };
 
+  const getClasses = async(req,res)=>{
+    try{
+      const response = await axios.get(path+'admin/class');
+      console.log(response);
+      setClassSelected(response.data);
+    }catch(err){
+      console.log(err);
+    }
+  }
+
   const addLectureHandler = () => {
-    let lecturesArray = data.lectures;
+    let lecturesArray = data.Lectures;
     lecturesArray.push(lecture);
-    setData({ ...data, lectures: lecturesArray });
+    setData({ ...data, Lectures: lecturesArray });
     setLecture({
-      branch: "",
-      semester: "",
-      subject: "",
+      Branch:[],
+      Semester:0,
+      Subject:{}
     });
   };
+
+  useEffect(()=>{
+    getClasses();
+  },[]);
 
   return (
     <div>
@@ -62,28 +93,64 @@ const AdminTeacher = () => {
       <div className="adminform">
         <TextField
           id="outlined-basic"
-          label="Name"
+          label="Full Name"
           variant="outlined"
-          name="name"
-          value={data.name}
+          name="FullName"
+          value={data.FullName}
           onChange={onChangeHandler}
         />
         <TextField
           id="outlined-basic"
           label="Email"
-          name="email"
+          name="Email"
           variant="outlined"
-          value={data.email}
+          value={data.Email}
           onChange={onChangeHandler}
         />
         <TextField
           id="outlined-basic"
-          name="password"
           label="Password"
+          name="Password"
           variant="outlined"
-          value={data.password}
+          value={data.Password}
           onChange={onChangeHandler}
         />
+         <TextField
+          id="outlined-basic"
+          label="Phone"
+          name="PhoneNumber"
+          variant="outlined"
+          value={data.PhoneNumber}
+          onChange={onChangeHandler}
+        />
+        <FormControl>
+          <InputLabel>Gender</InputLabel>
+          <Select
+            label="Gender"
+            value={data.Gender}
+            onChange={(e) =>
+              setData({...data,Gender : e.target.value})
+            }
+          >
+           <MenuItem value={'Male'}>Male</MenuItem>
+           <MenuItem value={'female'}>Female</MenuItem>
+           <MenuItem value={'Other'}>Other</MenuItem>
+          </Select>
+        </FormControl> 
+        <FormControl>
+          <InputLabel>is Admin ? </InputLabel>
+          <Select
+            label="is Admin ?"
+            value={data.isAdmin}
+            onChange={(e) =>
+              setData({...data,isAdmin:e.target.value})
+            }
+          >
+          <MenuItem value={true}>Yes</MenuItem>
+          <MenuItem value={false}>No</MenuItem>
+          </Select>
+        </FormControl>   
+        <div></div>
         <div></div>
         <div>Lecture Details Details</div>
         <div></div>
@@ -94,78 +161,67 @@ const AdminTeacher = () => {
           <InputLabel>Class</InputLabel>
           <Select
             label="Branch"
-            value={lecture.branch}
-            onChange={(e) => setLecture({ ...lecture, branch: e.target.value })}
+            value={lecture.Branch}
+            onChange={(e) => setLecture({ ...lecture, Branch: e.target.value })}
           >
-            <MenuItem value={"cs"}>Computer Science</MenuItem>
-            <MenuItem value={"it"}>Information Technology</MenuItem>
-            <MenuItem value={"ece"}>Electronics</MenuItem>
-            <MenuItem value={"ee"}>Electrical</MenuItem>
-            <MenuItem value={"eee"}>Electrical & Electronics</MenuItem>
-            <MenuItem value={"civil"}>Civil</MenuItem>
-            <MenuItem value={"me"}>Mechanical</MenuItem>
+           {
+            classSelected.map((branch)=>{
+              return <MenuItem value={branch}>
+                SEM : {branch.Semester + " " + branch.Name} 
+              </MenuItem>
+            })
+           }
           </Select>
         </FormControl>
-
-        <FormControl>
-          <InputLabel>Current Semester</InputLabel>
+      <FormControl>
+          <InputLabel>Select Subject</InputLabel>
           <Select
-            label="Semester"
-            value={lecture.semester}
+            label="Subject"
+            value={lecture.Subject}
             onChange={(e) =>
-              setLecture({ ...lecture, semester: e.target.value })
+              setLecture({ ...lecture, Subject: e.target.value })
             }
           >
-            <MenuItem value={"1"}>First</MenuItem>
-            <MenuItem value={"2"}>Second</MenuItem>
-            <MenuItem value={"3"}>Third</MenuItem>
-            <MenuItem value={"4"}>Fourth</MenuItem>
-            <MenuItem value={"5"}>Fifth</MenuItem>
-            <MenuItem value={"6"}>Sixth</MenuItem>
-            <MenuItem value={"7"}>Seventh</MenuItem>
-            <MenuItem value={"8"}>Eight</MenuItem>
+            {
+              lecture?.Branch?.Subjects?.map((sub)=><MenuItem value={sub}>{sub.Name}</MenuItem>)
+            }
           </Select>
-        </FormControl>
-        <TextField
-          name="subject"
-          onChange={(e) =>
-            setLecture({ ...lecture, subject: e.target.value.toLowerCase() })
-          }
-          value={lecture.subject}
-          label="Subject"
-        ></TextField>
-        <div></div>
+        </FormControl> 
         <div>
-          <Button onClick={addLectureHandler} variant="contained">
+          <Button onClick={addLectureHandler} variant="outlined">
             Add Lecture
           </Button>
         </div>
-
         <div></div>
       </div>
+
       <div className="addLecture">
         <p className="bg-gray-200">
           <span className="mx-2">Branch</span>
           <span className="mx-2">Semester</span>
           <span className="mx-2">Subject</span>
         </p>
-        {data.lectures.map((lec) => {
+        {data.Lectures.map((lec) => {
           return (
             <p>
-              <span className="mx-2">{lec.branch?.toUpperCase()}</span>
-              <span className="mx-2">{lec.semester}</span>
-              <span className="mx-2">{lec.subject?.toUpperCase()}</span>
+              <span className="mx-2">{lec.Branch?.Name?.toUpperCase()}</span>
+              <span className="mx-2">{lec.Branch?.Semester}</span>
+              <span className="mx-2">{lec.Subject?.Name?.toUpperCase()}</span>
             </p>
           );
         })}
       </div>
-      <div className="admin-form-submit-button">
+
+      <div>
+        <p className="m-2 p-2 flex justify-center text-red-400">{error}</p>
+      </div>
+      <div className="admin-form-submit-button m-8">
         <Button
           variant="contained"
           onClick={handleSubmit}
           sx={{ width: "200px" }}
         >
-          Add Teacher
+          Add Teacher Data 
         </Button>
       </div>
     </div>
