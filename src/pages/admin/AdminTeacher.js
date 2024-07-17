@@ -72,6 +72,10 @@ const AdminTeacher = () => {
     }
   }
 
+  useEffect(()=>{
+    getClasses();
+  },[]);
+
   const addLectureHandler = () => {
     let lecturesArray = data.Lectures;
     lecturesArray.push(lecture);
@@ -83,9 +87,7 @@ const AdminTeacher = () => {
     });
   };
 
-  useEffect(()=>{
-    getClasses();
-  },[]);
+
 
   return (
     <div>

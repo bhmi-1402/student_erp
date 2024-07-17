@@ -21,3 +21,8 @@ input::-webkit-outer-spin-button {
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
+/* 
+.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input{
+    padding-top: 8px !important;
+    padding-bottom: 8px !important;
+} */

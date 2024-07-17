@@ -1,0 +1,197 @@
+{
+  "_id": "66962c5d685e4eab9e6bd34e",
+  "FullName": "Dheeraj Pandey",
+  "Email": "DheerajPandeyHOD@jssaten.ac.in",
+  "Password": "$2b$10$1UUIKQJO5B0QIIyDqkJbGetFWm2YH2iWmj9AJuKi7DUo6BgqKPrgO",
+  "Lectures": [
+    {
+      "Branch": {
+        "_id": "66962c27685e4eab9e6bd34a",
+        "Name": "Mechanical",
+        "Alias": "ME",
+        "Students": [],
+        "Semester": 3,
+        "Subjects": [
+          {},
+          {
+            "_id": "66929c69c42d0ebe20bfa4a1",
+            "Name": "Artificial Intelligence",
+            "Alias": "AI",
+            "createdAt": "2024-07-13T15:25:29.627Z",
+            "updatedAt": "2024-07-13T15:25:29.627Z",
+            "__v": 0
+          },
+          {
+            "_id": "66929c4fc42d0ebe20bfa49f",
+            "Name": "Machine Learning",
+            "Alias": "ML",
+            "createdAt": "2024-07-13T15:25:03.570Z",
+            "updatedAt": "2024-07-13T15:25:03.570Z",
+            "__v": 0
+          },
+          {
+            "_id": "66929cbdc42d0ebe20bfa4a9",
+            "Name": "Maths 1",
+            "Alias": "MATH_I",
+            "createdAt": "2024-07-13T15:26:53.873Z",
+            "updatedAt": "2024-07-13T15:26:53.873Z",
+            "__v": 0
+          },
+          {
+            "_id": "66929ccfc42d0ebe20bfa4ab",
+            "Name": "Mathematics 2",
+            "Alias": "MATH_2",
+            "createdAt": "2024-07-13T15:27:11.118Z",
+            "updatedAt": "2024-07-13T15:27:11.118Z",
+            "__v": 0
+          },
+          {
+            "_id": "6693bfd818542b11e8786cc6",
+            "Name": "Electronics Engneering ",
+            "Alias": "EC",
+            "createdAt": "2024-07-14T12:08:56.799Z",
+            "updatedAt": "2024-07-14T12:08:56.799Z",
+            "__v": 0
+          }
+        ],
+        "__v": 0
+      },
+      "Semester": "",
+      "Subject": {
+        "_id": "66929c69c42d0ebe20bfa4a1",
+        "Name": "Artificial Intelligence",
+        "Alias": "AI",
+        "createdAt": "2024-07-13T15:25:29.627Z",
+        "updatedAt": "2024-07-13T15:25:29.627Z",
+        "__v": 0
+      }
+    },
+    {
+      "Branch": {
+        "_id": "66962bdd685e4eab9e6bd346",
+        "Name": "Computer Science",
+        "Alias": "CSE",
+        "Students": [],
+        "Semester": 1,
+        "Subjects": [
+          {
+            "_id": "6693f50899e443b3b6b7bead",
+            "Name": "Human Resources",
+            "Alias": "HR",
+            "createdAt": "2024-07-14T15:55:52.360Z",
+            "updatedAt": "2024-07-14T15:55:52.360Z",
+            "__v": 0
+          },
+          {
+            "_id": "6693f47299e443b3b6b7bea3",
+            "Name": "Object Oriented Programming",
+            "Alias": "OOPS",
+            "createdAt": "2024-07-14T15:53:22.184Z",
+            "updatedAt": "2024-07-14T15:53:22.184Z",
+            "__v": 0
+          },
+          {
+            "_id": "6693bfd818542b11e8786cc6",
+            "Name": "Electronics Engneering ",
+            "Alias": "EC",
+            "createdAt": "2024-07-14T12:08:56.799Z",
+            "updatedAt": "2024-07-14T12:08:56.799Z",
+            "__v": 0
+          },
+          {
+            "_id": "6693f58599e443b3b6b7beb1",
+            "Name": "Machine Learning",
+            "Alias": "ML",
+            "createdAt": "2024-07-14T15:57:57.644Z",
+            "updatedAt": "2024-07-14T15:57:57.644Z",
+            "__v": 0
+          }
+        ],
+        "__v": 0
+      },
+      "Semester": 0,
+      "Subject": {
+        "_id": "6693f50899e443b3b6b7bead",
+        "Name": "Human Resources",
+        "Alias": "HR",
+        "createdAt": "2024-07-14T15:55:52.360Z",
+        "updatedAt": "2024-07-14T15:55:52.360Z",
+        "__v": 0
+      }
+    },
+    {
+      "Branch": {
+        "_id": "66962bff685e4eab9e6bd348",
+        "Name": "Information Technology",
+        "Alias": "IT",
+        "Students": [],
+        "Semester": 2,
+        "Subjects": [
+          {},
+          {
+            "_id": "66929c95c42d0ebe20bfa4a5",
+            "Name": "Physics",
+            "Alias": "PHY",
+            "createdAt": "2024-07-13T15:26:13.489Z",
+            "updatedAt": "2024-07-13T15:26:13.489Z",
+            "__v": 0
+          },
+          {
+            "_id": "66929c69c42d0ebe20bfa4a1",
+            "Name": "Artificial Intelligence",
+            "Alias": "AI",
+            "createdAt": "2024-07-13T15:25:29.627Z",
+            "updatedAt": "2024-07-13T15:25:29.627Z",
+            "__v": 0
+          },
+          {
+            "_id": "66929c8ec42d0ebe20bfa4a3",
+            "Name": "Theory of Computation and Formal Language",
+            "Alias": "TAFL",
+            "createdAt": "2024-07-13T15:26:06.187Z",
+            "updatedAt": "2024-07-13T15:26:06.187Z",
+            "__v": 0
+          },
+          {
+            "_id": "66929c4fc42d0ebe20bfa49f",
+            "Name": "Machine Learning",
+            "Alias": "ML",
+            "createdAt": "2024-07-13T15:25:03.570Z",
+            "updatedAt": "2024-07-13T15:25:03.570Z",
+            "__v": 0
+          },
+          {
+            "_id": "66929c41c42d0ebe20bfa49d",
+            "Name": "Data Analysis and Visualisation",
+            "Alias": "DAV",
+            "createdAt": "2024-07-13T15:24:49.936Z",
+            "updatedAt": "2024-07-13T15:24:49.936Z",
+            "__v": 0
+          }
+        ],
+        "__v": 0
+      },
+      "Semester": 0,
+      "Subject": {
+        "_id": "66929c69c42d0ebe20bfa4a1",
+        "Name": "Artificial Intelligence",
+        "Alias": "AI",
+        "createdAt": "2024-07-13T15:25:29.627Z",
+        "updatedAt": "2024-07-13T15:25:29.627Z",
+        "__v": 0
+      }
+    }
+  ],
+  "Gender": "Other",
+  "isAdmin": false,
+  "PhoneNumber": {
+    "$numberLong": "6912141269"
+  },
+  "createdAt": {
+    "$date": "2024-07-16T08:16:29.541Z"
+  },
+  "updatedAt": {
+    "$date": "2024-07-16T08:16:29.541Z"
+  },
+  "__v": 0
+}

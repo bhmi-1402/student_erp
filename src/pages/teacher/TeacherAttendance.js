@@ -7,43 +7,93 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import ToggleButton from "@mui/material/ToggleButton";
 import ToggleButtonGroup from "@mui/material/ToggleButtonGroup";
 import { useState } from "react";
+import axios from "axios";
+import path from './../../path';
 import "./teacher.css";
-import { Button } from "@mui/material";
-import { Select } from "antd";
+import {
+  Select,
+  TextField,
+  MenuItem,
+  FormControl,
+  Button,
+  InputLabel,
+  LinearProgress,
+} from "@mui/material";
+// import { Select } from "antd";
+import { Input } from "antd";
+import demoTeacher from './teacherDemo.json';
 import Strip from "../../components/common/Strip";
-
-const data = [
-  { name: "Abhay", _id: "2100911540002" },
-  { name: "Deepanshu", _id: "2100911540014" },
-  { name: "Harsh", _id: "210091154021" },
-  { name: "Naveen", _id: "2100911540029" },
-  { name: "Rahul", _id: "2100911540039" },
-  { name: "Yash", _id: "2100911540059" },
-  { name: "Bineet", _id: "21009115400BMC" },
-  { name: "Dhannu", _id: "2100911_DMC" },
-  { name: "Satyam", _id: "2100911_JODHA" },
-];
+import { Student } from "phosphor-react";
 
 const TeacherAttendance = () => {
-  const [students, setStudents] = useState(data);
+  const [students, setStudents] = useState([]);
+  const [teacherUser, setTeacherUser] = useState(demoTeacher);
+  const [branch, setBranch] = useState({});
+  const [Lectures, setLectures] = useState([]);
   const [present, setPresent] = useState([]);
+  const [selectedSemester, setSelectedSemester] = useState(1);
+
+  useEffect(() => {
+    let TempLectures = teacherUser.Lectures.filter(
+      (lec) => lec.Branch.Semester == selectedSemester
+    );
+    if(TempLectures.length == 0){
+      // setLectureDisabled(true);
+      setLectures([
+        {
+          Branch: {
+            Name: "NO DATA FOUND",
+          },
+        },
+      ]);
+    }
+    setLectures(TempLectures);
+  }, [selectedSemester]);
+
+  const FetchStudent = async (lec)=>{
+    try{
+      setBranch(lec)
+      console.log(lec);
+      console.log(lec?.Branch._id)
+      const response  = await axios.get(path+'teacher/fetchStudent?id='+lec?.Branch._id);
+      if(response.data){
+        setStudents(response.data);
+      }
+      console.log(response);
+    }catch(err){
+      console.log(err);
+    }
+  }
 
   const handlePresent = (id) => {
     const presentArray = [...present, id];
     setPresent(presentArray);
   };
+
   const handleAbsent = (id) => {
     let presentArray = present;
-
     const TempArray = presentArray.filter((studentID) => {
       return studentID != id;
     });
-
     setPresent(TempArray);
   };
-  const handleSubmit = () => {
-    console.log(present);
+  
+  const handleSubmit = async () => {
+      try{
+        const response = await axios.post(path+'teacher/markAttendance',{
+          PresentStudents : present,
+          Semester : branch.Branch.Semester,
+          SubjectId : branch.Subject._id,
+          SubjectName : branch.Subject.Name,
+          TeacherId : teacherUser._id,
+          BranchName : branch.Branch.Name,
+          BranchID : branch.Branch._id
+        });
+      }catch(err){
+        console.log(err);
+      }
   };
+
   const isPresent = (id) => {
     return present.includes(id);
   };
@@ -58,37 +108,54 @@ const TeacherAttendance = () => {
       </div>
       <div className="attendance-container">
         <div className="attendance-left-bar">
-            <p>Select Class</p>
+        <p>Select Semester</p>
+          <FormControl>
+            {/* <InputLabel>Semester</InputLabel> */}
             <Select
-            defaultValue={'CSDS'}
-            options={[
-              {value:"CSDS",label:"Computer Science : Data Science"},
-              {value:"IT",label:"Information Technology"},
-              {value:"CSE",label:"Computer Science Eng."},
-              {value:"CSAI",label:"Computer Science : AI"},
-              {value:"EE",label:"Electronics Eng."},
-              {value:"CE",label:"Civil Eng."}
-            ]}
-            ></Select>
-            <p>Select Semester</p>
+              // label="Semester"
+              value={selectedSemester}
+              onChange={(e) => setSelectedSemester(e.target.value)}
+            >
+              <MenuItem value={1}>SEMESTER I</MenuItem>
+              <MenuItem value={2}>SEMESTER II</MenuItem>
+              <MenuItem value={3}>SEMESTER III</MenuItem>
+              <MenuItem value={4}>SEMESTER IV</MenuItem>
+              <MenuItem value={5}>SEMESTER V</MenuItem>
+              <MenuItem value={6}>SEMESTER VI</MenuItem>
+              <MenuItem value={7}>SEMESTER VII</MenuItem>
+              <MenuItem value={8}>SEMESTER VIII</MenuItem>
+
+            </Select>
+          </FormControl>
+          <hr></hr>
+
+          <p>Select Class</p>
+          <FormControl>
+            {/* <InputLabel>Branch</InputLabel> */}
             <Select
-             defaultValue={'5'}
-             options={[
-               {value:"1",label:"Semester I"},
-               {value:"2",label:"Semester II"},
-               {value:"3",label:"Semester III"},
-               {value:"4",label:"Semester IV"},
-               {value:"5",label:"Semester V"},
-               {value:"6",label:"Semester VI"}
-             ]}
-            ></Select>
+              // label="Branch"
+              value={branch}
+              placeholder="Select Branch"
+              onChange={(e) =>{
+                FetchStudent(e.target.value);
+              }}
+            >
+              {Lectures?.map((lec) => (
+                <MenuItem value={lec}>{lec.Branch.Name + " - " + lec.Subject.Alias+""}</MenuItem>
+              ))}
+            </Select>
+          </FormControl>
+          <hr></hr>
+          <p>Subject</p>
+          <Input value={branch?.Subject?.Name}></Input>
+          <hr></hr>
         </div>
         <div>
           {students.map((student) => (
             <div className="attendence-name">
-              <p>{student._id}</p>
+              <p>{student.RollNumber}</p>
               <div>
-                <p>{student.name}</p>
+                <p>{student.FullName}</p>
               </div>
               <div className="flex gap-2 attendance-group">
                 {isPresent(student._id) ? (

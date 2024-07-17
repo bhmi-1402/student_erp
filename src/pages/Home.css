@@ -19,7 +19,7 @@
 .home-right > p {
   margin: 8px;
 }
-.home-right > button{
+.home-right > a > button{
   width: 200px;
   height: 150x;
   padding: 12px 20px;
@@ -29,7 +29,6 @@
   border-radius: 12px;
   justify-self: center;
   align-self: center;
-
   border: 2px solid black;
 }
 .home-right > button :hover{

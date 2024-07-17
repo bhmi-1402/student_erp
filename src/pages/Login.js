@@ -22,18 +22,45 @@ import styled from "styled-components";
 import admin_profile from './../assets/admin.jpeg'
 import student_profile from './../assets/student.jpeg'
 import teacher_profile from './../assets/teacher.jpeg'
+import axios from "axios";
+import path from "./../path";
+import { useDispatch } from "react-redux";
+import { addUser } from "../store/userSlice";
 
 const defaultTheme = createTheme();
 
 const LoginPage = () => {
+
+  const dispatch = useDispatch();
   const [SearchParams] = useSearchParams();
-  const navigate = useNavigate();
   const [UserType, setUserType] = useState(SearchParams.get("user"));
+  const [Email,setEmail] = useState("");
+  const [Password,setPassword] = useState("");
 
   if(UserType == ''){
     setUserType('Student')
   }
   
+  const handleSubmit = async ()=>{
+      try{
+        if(UserType == 'admin' || UserType == 'teacher'){
+          const response = await axios.post(path+'teacher/login',{Email,Password});
+          console.log(response)
+          if(response.data.success){
+            dispatch(addUser(response.data.user));
+          }
+        }else{
+          const response = await axios.post(path+'student/login',{Email,Password});
+          if(response.data.success){
+            dispatch(addUser(response.data.user));
+          }
+          console.log(response)
+        }
+      }catch(err){
+        console.log(err);
+      }
+  }
+
   return (
     <ThemeProvider theme={defaultTheme}>
       <Grid container component="main" sx={{ height: "100vh" }}>
@@ -86,6 +113,8 @@ const LoginPage = () => {
                 required
                 fullWidth
                 id="email"
+                value={Email}
+                onChange={e=>setEmail(e.target.value)}
                 label="Enter your email"
                 name="email"
                 autoComplete="email"
@@ -97,6 +126,8 @@ const LoginPage = () => {
                 required
                 fullWidth
                 name="password"
+                value={Password}
+                onChange={e=>setPassword(e.target.value)}
                 label="Password"
                 id="password"
                 autoComplete="current-password"
@@ -113,10 +144,10 @@ const LoginPage = () => {
               </Grid>
 
               <LightPurpleButton
-                type="submit"
+          
                 fullWidth
                 onClick={()=>{
-                 navigate('/dashboard/student');
+                 handleSubmit();
                 }}
                 variant="contained"
                 sx={{ mt: 3 }}
