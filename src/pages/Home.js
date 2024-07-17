@@ -134,15 +134,17 @@ const LandingPage = () => {
             effortlessly.
           </p>
           <p>
-            For Students : Check Attendance,Marks and Pay Fees with register
+           <strong> For Students </strong>: Check Attendance,Marks and Pay Fees with register
             complaint along with Suggestion
           </p>
           <p>
-            For Teacher : Mark Attendance,Update Result,Report A Student, File
+            <strong>For Teacher</strong> : Mark Attendance,Update Result,Report A Student, File
             Suggestion
           </p>
           <span></span>
+          <Link to={'/choose_user'}>
           <button>Login<Login></Login></button>
+          </Link>
         </div>
       </div>
     </>

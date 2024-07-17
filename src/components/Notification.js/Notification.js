@@ -7,31 +7,39 @@ import { useSelector } from "react-redux";
 import { Link, matchRoutes } from "react-router-dom";
 import DateDiff from "date-diff";
 import CustomPopup from "../common/CustomPopup";
+import { CatchingPokemon } from "@mui/icons-material";
 
-const sampleNotificationData = [{
-    createdAt : new Date(),
-    isSeen : true,
-    username : "naveen12venom",
-    msg:"topic if the notice",
-    extra : "by this one"
-}];
+const sampleNotificationData = [
+  {
+    createdAt: new Date(),
+    isSeen: true,
+    username: "naveen12venom",
+    msg: "topic if the notice",
+    extra: "by this one",
+  },
+];
 
 const NotificationPanel = () => {
   const [notifications, setNotifications] = useState(sampleNotificationData);
-  const [showPopup,setShowPopup] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+  const [currentNotification,setCurrentNotification] = useState({});
   const user = useSelector((s) => s.user);
 
   const getNotifications = async () => {
-   
+    try {
+      const response = await axios.get(path + "admin/notice");
+      if (response.data) {
+        setNotifications(response.data);
+      }
+    } catch (err) {}
   };
 
-  const markedAsSeen = async ()=>{
-    try{
-   
-    }catch(err){
+  const markedAsSeen = async () => {
+    try {
+    } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   useEffect(() => {
     getNotifications();
@@ -39,10 +47,15 @@ const NotificationPanel = () => {
 
   return (
     <div className="notification-panel">
-      {
-        showPopup && <CustomPopup close={()=>setShowPopup(false)}></CustomPopup>
-      }
-      <div className="panel-heading"><p>Notifications</p> <button onClick={markedAsSeen} variant="outlined">Marked as Seen</button></div>
+      {showPopup && (
+        <CustomPopup data={currentNotification} close={() => setShowPopup(false)}></CustomPopup>
+      )}
+      <div className="panel-heading">
+        <p>Notifications</p>{" "}
+        <button onClick={markedAsSeen} variant="outlined">
+          Marked as Seen
+        </button>
+      </div>
       <div className="table">
         <div className="table-head">
           <p>User</p>
@@ -67,19 +80,29 @@ const NotificationPanel = () => {
               }
 
               return (
-                <div className={ele.isSeen ? "table-row" : "table-row unseen"} onClick={()=>setShowPopup(true)}>
+                <div
+                  className={ele.isSeen ? "table-row" : "table-row unseen"}
+                  onClick={() => {
+                    setShowPopup(true)
+                    setCurrentNotification(ele);
+                  }}
+                >
                   <Avatar src={ele.profilePicture}></Avatar>
                   <p>
                     {" "}
-                    <Link
-                      to={``}
-                      className="username-link"
-                    >
-                      {ele.username}
-                    </Link>{" "}
-                    {ele.msg}
+                    <Link to={``} className="username-link">
+                      {ele.Sender?.FullName}
+                    </Link>
+                    {" - "}
+                    {ele.Title}
                     {/* {ele.extra && <Link to={ele.link}> {" " + ele.extra}</Link>} */}
-                    {!ele.isSeen && <span className="new-indicator"></span>}
+                    {/* {!ele.isSeen && <span className="new-indicator"></span>} */}
+                    <span className="mx-2 text-gray-500">
+                      {ele.Body?.slice(0, 20)}
+                      {
+                        ele.Body?.length > 20 ? "..." : ""
+                      }
+                    </span>
                   </p>
                   <p className="time">{timeToshow}</p>
                 </div>

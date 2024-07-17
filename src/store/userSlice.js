@@ -4,7 +4,7 @@ const userSlice = createSlice({
     initialState : {name : "Bhoomi"},
     reducers : {
         addUser : (state,action)=>{
-            state.user = action.payload;
+            state.data = action.payload;
         },
         removeUser : (state,action)=>{
             state = {};
