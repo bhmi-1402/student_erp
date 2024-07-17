@@ -11,7 +11,7 @@ import Login from "./pages/Login.js";
 // import Present from './pages/Present.js';
 import StudentAttendance from "./pages/student/StudentAttendence.js";
 import StudentProfile from "./pages/student/StudentProfile";
-import StudentSideBar from "./pages/student/StudentSideBar";
+
 import StudentSubjects from "./pages/student/StudentSubjects";
 import TeacherProfile from "./pages/teacher/TeacherProfile.js";
 import TeacherSideBar from "./pages/teacher/TeacherSideBar.js";
@@ -67,7 +67,7 @@ function App() {
 
 
         {/* Remaining For Evalutaion */}
-        <Route path="/StudentSidebar" element={<StudentSideBar />}></Route>
+        {/* <Route path="/StudentSidebar" element={<StudentSideBar />}></Route> */}
         <Route path="/StudentSubjects" element={<StudentSubjects />}></Route>
         <Route path="/StudentProfile" element={<StudentProfile />}></Route>
         <Route path="/TeacherSideBar" element={<TeacherSideBar />}></Route>
