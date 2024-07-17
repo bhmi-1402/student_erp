@@ -9,10 +9,10 @@ import {
   InputLabel,
   LinearProgress,
   Chip,
+  FormHelperText,
 } from "@mui/material";
 import path from "../../path";
 import axios from "axios";
-// import './AdminTeacher.css'
 
 const AdminAddClass = () => {
   const [data, setData] = useState({
@@ -23,11 +23,14 @@ const AdminAddClass = () => {
   });
 
   const [subjects, setSubjects] = useState([]);
-  const [currentSubject, setCurrentSubject] = useState(false);
+  const [currentSubject, setCurrentSubject] = useState("");
   const [subject, SetSubject] = useState({
     subjectName: "",
     alias: "",
   });
+
+  const [errors, setErrors] = useState({});
+  const [subjectErrors, setSubjectErrors] = useState({});
 
   const getSubject = async () => {
     try {
@@ -42,6 +45,23 @@ const AdminAddClass = () => {
     getSubject();
   }, []);
 
+  const validate = () => {
+    let tempErrors = {};
+    if (!data.Name) tempErrors.Name = "Name is required";
+    if (!data.Alias) tempErrors.Alias = "Alias is required";
+    if (data.Subjects.length === 0) tempErrors.Subjects = "At least one subject is required";
+    setErrors(tempErrors);
+    return Object.keys(tempErrors).length === 0;
+  };
+
+  const validateSubject = () => {
+    let tempErrors = {};
+    if (!subject.subjectName) tempErrors.subjectName = "Subject name is required";
+    if (!subject.alias) tempErrors.subjectAlias = "Subject alias is required";
+    setSubjectErrors(tempErrors);
+    return Object.keys(tempErrors).length === 0;
+  };
+
   const onChangeHandler = (event) => {
     const name = event.target.name;
     const value = event.target.value;
@@ -49,34 +69,42 @@ const AdminAddClass = () => {
   };
 
   const handleSubmit = async () => {
-    try {
-      console.log(data);
-      const res = await axios.post(path + "admin/addClass", data);
-      setData({
-        Name: "",
-        Alias: "",
-        Subjects: [],
-        Semester: 1,
-      });
-      if (res.data.error) {
-        alert("Error");
+    if (validate()) {
+      try {
+        console.log(data);
+        const res = await axios.post(path + "admin/addClass", data);
+        setData({
+          Name: "",
+          Alias: "",
+          Subjects: [],
+          Semester: 1,
+        });
+        if (res.data.error) {
+          alert("Error");
+        }
+      } catch (error) {
+        alert("Some Error Occurred");
       }
-    } catch (error) {
-      alert("Some Error Occured");
     }
   };
 
   const handleSubject = async () => {
-    try {
-      const resp = await axios.post(path + "admin/addSubject", {
-        ...subject,
-      });
-      SetSubject({
-        subjectName: "",
-        alias: "",
-      });
-      console.log(resp);
-    } catch (err) {}
+    if (validateSubject()) {
+      try {
+        const resp = await axios.post(path + "admin/addSubject", {
+          ...subject,
+        });
+        SetSubject({
+          subjectName: "",
+          alias: "",
+        });
+        console.log(resp);
+        // Refresh the subject list after adding a new subject
+        getSubject();
+      } catch (err) {
+        alert("Some Error Occurred");
+      }
+    }
   };
 
   return (
@@ -90,6 +118,8 @@ const AdminAddClass = () => {
           name="Name"
           value={data.Name}
           onChange={onChangeHandler}
+          error={!!errors.Name}
+          helperText={errors.Name}
         />
         <TextField
           id="outlined-basic"
@@ -98,9 +128,11 @@ const AdminAddClass = () => {
           variant="outlined"
           value={data.Alias}
           onChange={onChangeHandler}
+          error={!!errors.Alias}
+          helperText={errors.Alias}
         />
 
-        <FormControl>
+        <FormControl error={!!errors.Semester}>
           <InputLabel>Semester</InputLabel>
           <Select
             label="Semester"
@@ -114,7 +146,7 @@ const AdminAddClass = () => {
             <MenuItem value={5}>Fifth</MenuItem>
             <MenuItem value={6}>Sixth</MenuItem>
             <MenuItem value={7}>Seventh</MenuItem>
-            <MenuItem value={8}>Eight</MenuItem>
+            <MenuItem value={8}>Eighth</MenuItem>
           </Select>
         </FormControl>
 
@@ -124,29 +156,32 @@ const AdminAddClass = () => {
         <hr></hr>
         <hr></hr>
 
-        <FormControl>
+        <FormControl error={!!errors.Subjects}>
           <InputLabel>Subject</InputLabel>
           <Select
             label="Subjects"
-            value={currentSubject.Name}
+            value={currentSubject.Name || ""}
             onChange={(e) => setCurrentSubject(e.target.value)}
           >
-            {subjects.map((sub) => {
-              return <MenuItem value={sub}>{sub.Name}</MenuItem>;
-            })}
+            {subjects.map((sub) => (
+              <MenuItem key={sub.Name} value={sub}>
+                {sub.Name}
+              </MenuItem>
+            ))}
           </Select>
+          <FormHelperText>{errors.Subjects}</FormHelperText>
         </FormControl>
 
         <div></div>
         <div>
           <Button
             onClick={() => {
-              if (currentSubject) {
+              if (currentSubject && !data.Subjects.find((s) => s.Name === currentSubject.Name)) {
                 setData({
                   ...data,
                   Subjects: [...data.Subjects, currentSubject],
                 });
-                setCurrentSubject({});
+                setCurrentSubject("");
               }
             }}
             variant="contained"
@@ -162,17 +197,13 @@ const AdminAddClass = () => {
         <p className="bg-gray-200">
           <span className="mx-2">Subject</span>
           <span className="mx-2">Code</span>
-          {/* <span className="mx-2">Subject</span> */}
         </p>
-        {data.Subjects.map((lec) => {
-          return (
-            <p>
-              <span className="mx-2">{lec.Name?.toUpperCase()}</span>
-              <span className="mx-2">{lec.Alias}</span>
-              {/* <span className="mx-2">{lec.subject?.toUpperCase()}</span> */}
-            </p>
-          );
-        })}
+        {data.Subjects.map((lec) => (
+          <p key={lec.Alias}>
+            <span className="mx-2">{lec.Name?.toUpperCase()}</span>
+            <span className="mx-2">{lec.Alias}</span>
+          </p>
+        ))}
       </div>
 
       <div className="admin-form-submit-button">
@@ -189,18 +220,22 @@ const AdminAddClass = () => {
 
       <div className="adminform">
         <TextField
-          name="subject"
+          name="subjectName"
           onChange={(e) =>
             SetSubject({ ...subject, subjectName: e.target.value })
           }
           value={subject.subjectName}
           label="Subject"
+          error={!!subjectErrors.subjectName}
+          helperText={subjectErrors.subjectName}
         ></TextField>
         <TextField
-          name="subject"
+          name="alias"
           onChange={(e) => SetSubject({ ...subject, alias: e.target.value })}
           value={subject.alias}
           label="Alias"
+          error={!!subjectErrors.subjectAlias}
+          helperText={subjectErrors.subjectAlias}
         ></TextField>
 
         <Button
@@ -208,7 +243,7 @@ const AdminAddClass = () => {
           onClick={handleSubject}
           sx={{ width: "200px" }}
         >
-          Add Subjects
+          Add Subject
         </Button>
       </div>
     </div>
@@ -216,3 +251,4 @@ const AdminAddClass = () => {
 };
 
 export default AdminAddClass;
+
