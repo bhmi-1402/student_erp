@@ -14,6 +14,7 @@ import {
   InputAdornment,
   CircularProgress,
   Backdrop,
+  LinearProgress,
 } from "@mui/material";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import bgpic from "../assets/designlogin.jpg";
@@ -24,24 +25,34 @@ import student_profile from './../assets/student.jpeg'
 import teacher_profile from './../assets/teacher.jpeg'
 import axios from "axios";
 import path from "./../path";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../store/userSlice";
+// import { useNavigate } from "react-router-dom";
+import { Progress } from "antd";
 
 const defaultTheme = createTheme();
 
 const LoginPage = () => {
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [SearchParams] = useSearchParams();
+  const [load,setLoad] = useState(false);
   const [UserType, setUserType] = useState(SearchParams.get("user"));
   const [Email,setEmail] = useState("");
   const [Password,setPassword] = useState("");
+  const user = useSelector(state => state.user.data);
+  
+  useEffect(()=>{
+    if(user) navigate('/');
+  },[]);
 
   if(UserType == ''){
     setUserType('Student')
   }
   
   const handleSubmit = async ()=>{
+    setLoad(true);
       try{
         if(UserType == 'admin' || UserType == 'teacher'){
           const response = await axios.post(path+'teacher/login',{Email,Password});
@@ -53,16 +64,21 @@ const LoginPage = () => {
           const response = await axios.post(path+'student/login',{Email,Password});
           if(response.data.success){
             dispatch(addUser(response.data.user));
+            navigate('/');
           }
           console.log(response)
         }
       }catch(err){
         console.log(err);
       }
+      setLoad(false);
   }
 
   return (
     <ThemeProvider theme={defaultTheme}>
+      {
+        load && <LinearProgress></LinearProgress>
+      }
       <Grid container component="main" sx={{ height: "100vh" }}>
         <CssBaseline />
         <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
@@ -149,6 +165,7 @@ const LoginPage = () => {
                 onClick={()=>{
                  handleSubmit();
                 }}
+                disabled={load}
                 variant="contained"
                 sx={{ mt: 3 }}
               >

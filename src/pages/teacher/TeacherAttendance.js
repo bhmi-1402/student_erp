@@ -24,10 +24,12 @@ import { Input } from "antd";
 import demoTeacher from './teacherDemo.json';
 import Strip from "../../components/common/Strip";
 import { Student } from "phosphor-react";
+import { useSelector } from "react-redux";
 
 const TeacherAttendance = () => {
   const [students, setStudents] = useState([]);
-  const [teacherUser, setTeacherUser] = useState(demoTeacher);
+  // const [teacherUser, setTeacherUser] = useState(demoTeacher);
+  const teacherUser = useSelector(state=>state.user.data);
   const [branch, setBranch] = useState({});
   const [Lectures, setLectures] = useState([]);
   const [present, setPresent] = useState([]);

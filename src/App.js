@@ -33,6 +33,7 @@ import NotificationPanel from "./components/Notification.js/Notification.js";
 import AdminComplaints from "./pages/admin/AdminComplaints.js";
 import Footer from "./components/common/Footer.js";
 import About from "./components/common/About.js";
+import  Dashboard  from "./pages/Dashboard.js"
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
         {/* Common Routes */}
         <Route path="/" index element={<Home/>}></Route>
         <Route path="/choose_user" element={<ChooseUser />}></Route>
+        <Route path='/dashboard' element={<Dashboard></Dashboard>}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/about" element={<About></About>}></Route>
         <Route path='/notification' element={<NotificationPanel></NotificationPanel>}></Route>

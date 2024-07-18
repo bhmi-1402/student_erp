@@ -13,22 +13,17 @@ import { useState,useEffect} from "react";
 import path from "../../path";
 import { useSelector } from "react-redux";
 
-function createData(subjectCode, subject, totalClass, marked, percentage) {
-  return { subjectCode, subject, totalClass, marked, percentage };
+const calcPercent = (numerator,denominator)=>{
+  let percentage = numerator*100 / denominator;
+  percentage = percentage.toFixed(1);
+  return percentage
 }
 
-const rows = [
-  createData("KCS603", "Computer Netwoks", "24", "20", "83%"),
-  createData("KCS601", "Software Engneering", "28", "24", "85%"),
-  createData("KNC601", "C.O.I.", "7", "5", "71%"),
-  createData("KOE068", "Software Project Management", "17", "14", "82%"),
-  createData("KIT601", "BlockChain Architecture", "18", "15", "83%"),
-  createData("KIT061", "Data Analytics", "20", "16", "80%"),
-];
-
 const Present = () => {
+  
   const [currentSemeseter,setCurrentSemester] = useState(1);
   const user = useSelector(state => state.user.data);
+  const [data,setData] = useState([]);
 
   const fetchAttendance = async ()=>{
     try{
@@ -37,6 +32,9 @@ const Present = () => {
         sem : currentSemeseter
       })
       console.log(response.data);
+      if(response.data){
+        setData(response.data)
+      }
     }catch(Err){
       console.log(Err)
     }
@@ -90,19 +88,19 @@ const Present = () => {
             </TableRow>
           </TableHead>
           <TableBody>
-            {rows.map((row) => (
+            {data.map((row) => (
               <TableRow
-                key={row.subjectCode}
+                key={row._id}
                 sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                className={row.percentage < "75%" ? "bg-red-200" : ""}
+                className={ calcPercent(row.Presents,row.TotalClasses) < 70 ? "bg-red-200" : ""}
               >
                 <TableCell component="th" scope="row">
-                  {row.subjectCode}
+                  {row.SubjectAlias}
                 </TableCell>
-                <TableCell align="left">{row.subject}</TableCell>
-                <TableCell align="right">{row.totalClass}</TableCell>
-                <TableCell align="right">{row.marked}</TableCell>
-                <TableCell align="right">{row.percentage}</TableCell>
+                <TableCell align="left">{row.SubjectName}</TableCell>
+                <TableCell align="right">{row.TotalClasses}</TableCell>
+                <TableCell align="right">{row.Presents}</TableCell>
+                <TableCell align="right">{calcPercent(row.Presents,row.TotalClasses) + " %"}</TableCell>
               </TableRow>
             ))}
           </TableBody>

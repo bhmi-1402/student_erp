@@ -16,12 +16,14 @@ import {
 import axios from "axios";
 import path from './../../path'
 import { Subject } from "@mui/icons-material";
+import { useSelector } from "react-redux";
 
 
 const TeacherAddMarks = () => {
   
   const [students, setStudents] = useState([]);
-  const [teacherUser, setTeacherUser] = useState(demoTeacher);
+  // const [teacherUser, setTeacherUser] = useState(demoTeacher);
+  const teacherUser = useSelector(s=>s.user.data);
   const [branch, setBranch] = useState({});
   const [Lectures, setLectures] = useState([]);
   const [TotalMarks,setTotalMarks] = useState(100);
@@ -80,6 +82,14 @@ const TeacherAddMarks = () => {
       Subject : branch?.Subject,
       Semester: branch?.Branch.Semester
       });
+
+      console.log({
+        Students : students,
+        TotalMarks,
+        TeacherId : teacherUser._id,
+        Subject : branch?.Subject,
+        Semester: branch?.Branch.Semester
+        })
     }catch(err){
       console.log(err);
     }
@@ -128,7 +138,7 @@ const TeacherAddMarks = () => {
               }}
             >
               {Lectures?.map((lec) => (
-                <MenuItem value={lec}>{lec.Branch.Name}</MenuItem>
+                <MenuItem value={lec}>{lec.Branch.Name + " - " + lec.Subject.Alias}</MenuItem>
               ))}
             </Select>
           </FormControl>

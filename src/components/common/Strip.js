@@ -1,7 +1,9 @@
 import './Strip.css'
 import profilepic from '../../assets/jssaten.jpeg'
 import logo from '../../assets/eduportal.jpeg';
+import { useSelector } from 'react-redux';
 const Strip = ()=>{
+    const user = useSelector(state=>state.user.data);
     return <>
     <div className="home-strip ">
         <div className='home-strip-left'>
@@ -18,9 +20,9 @@ const Strip = ()=>{
                     <img src={profilepic}></img>
             </div>
             <div className='home-strip-right-text'>
-                    <p>Naveen Chaudhary</p>
-                    <span>21CSDS009</span>
-                    <span>CS - DS</span>
+                    <p>{user.FullName}</p>
+                    <span>{user.RollNumber ? user.RollNumber : user.Email}</span>
+                    <span>{user.Branch?.Name}</span>
             </div>
         </div>
     </div>

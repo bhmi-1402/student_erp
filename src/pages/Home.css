@@ -20,7 +20,8 @@
   margin: 8px;
 }
 .home-right > a > button{
-  width: 200px;
+  min-width: 200px;
+  width: max-content;
   height: 150x;
   padding: 12px 20px;
   font-size: 1.8rem;

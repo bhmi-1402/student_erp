@@ -16,15 +16,27 @@ import teacher_profile from './../assets/teacher.jpeg'
 // import { useNavigate } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 const ChooseUser = () => {
+  const navigate = useNavigate();
+  const user = useSelector(state=>state.user.data);
+  useEffect(()=>{
+    if(user){
+      if(user.RollNumber){
+        navigate('/dashboard/student')
+      }else if(user.isAdmin == false){
+        navigate('/dashboard/teacher');
+      }
+    }
+  },[]);
   
   return (
     <StyledContainer>
       <Container>
         <Grid container spacing={2} justifyContent="center">
+            
           <Grid item xs={12} sm={6} md={4}>
             <div >
               <StyledPaper elevation={3}>
-              <Link to="/login?user=admin">
+              <Link to="/dashboard">
                <div className="flex justify-center items-center">
                     <img className='choose_user_image' src={admin_profile} ></img>
                 </div>
@@ -38,22 +50,7 @@ const ChooseUser = () => {
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
             <StyledPaper elevation={3}>
-              <Link to="/login?user=student">
-              <div>
-                <div className="flex justify-center items-center">
-                    <img className='choose_user_image' src={student_profile} ></img>
-                </div>
-                <StyledTypography className='text-bold'>
-                  Student
-                </StyledTypography>
-                Login as a student to explore course materials and assignments.
-              </div>
-              </Link>
-            </StyledPaper>
-          </Grid>
-          <Grid item xs={12} sm={6} md={4}>
-            <StyledPaper elevation={3}>
-             <Link to="/login?user=teacher">
+             <Link to="/dashboard/teacher">
               <div>
               <div className="flex justify-center items-center">
                     <img className='choose_user_image' src={teacher_profile} ></img>
