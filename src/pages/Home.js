@@ -1,11 +1,8 @@
 import React from "react";
 import "./Home.css";
 import { Link } from "react-router-dom";
-import { Container, Grid, Box, Button } from "@mui/material";
-import styled from "styled-components";
 import { Login } from "@mui/icons-material";
 import Students from "../assets/school-software.png";
-import { LightPurpleButton } from "../components/buttonStyles.js";
 import { useSelector } from "react-redux";
 
 const LandingPage = () => {

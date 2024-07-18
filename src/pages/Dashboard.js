@@ -36,7 +36,7 @@ const ChooseUser = () => {
           <Grid item xs={12} sm={6} md={4}>
             <div >
               <StyledPaper elevation={3}>
-              <Link to="/dashboard">
+              <Link to="/dashboard/admin">
                <div className="flex justify-center items-center">
                     <img className='choose_user_image' src={admin_profile} ></img>
                 </div>
@@ -81,7 +81,7 @@ export default ChooseUser;
 
 const StyledContainer = styled.div`
   background: white;
-  height: 120vh;
+  height: 80vh;
   display: flex;
   justify-content: center;
   padding: 2rem;

@@ -1,0 +1,18 @@
+.not-found{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+    width: 100vw;
+    gap: 15px;
+    flex-direction: column;
+}
+.not-found > p{
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+.not-found > div > img{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}

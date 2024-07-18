@@ -20,9 +20,9 @@ const Strip = ()=>{
                     <img src={profilepic}></img>
             </div>
             <div className='home-strip-right-text'>
-                    <p>{user.FullName}</p>
-                    <span>{user.RollNumber ? user.RollNumber : user.Email}</span>
-                    <span>{user.Branch?.Name}</span>
+                    <p>{user?.FullName}</p>
+                    <span>{user?.RollNumber ? user?.RollNumber : user?.Email}</span>
+                    <span>{user?.Branch?.Name}</span>
             </div>
         </div>
     </div>

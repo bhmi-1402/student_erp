@@ -256,7 +256,9 @@ export default function NavBar() {
           confirmButtonText={"No"}
           leftButtonText={"Yes, I'm Sure"}
           leftButton={true}
-          leftButtonFunction={() => localStorage.clear()}
+          leftButtonFunction={() =>{
+            localStorage.clear();
+          }}
           confirm={() => setLogoutModal(false)}
         ></Modal>
       ) : (

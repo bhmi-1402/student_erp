@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/static/css/main.7e73dc60.css",
+    "main.js": "/static/js/main.606fc771.js",
+    "static/js/453.d855a71b.chunk.js": "/static/js/453.d855a71b.chunk.js",
+    "static/media/school-software.png": "/static/media/school-software.ba6ef5dc71a09fc1b21f.png",
+    "static/media/teacher.jpeg": "/static/media/teacher.08fc5b33ae1a6c69979e.jpeg",
+    "static/media/student.jpeg": "/static/media/student.0aa3666e267bd957bb53.jpeg",
+    "static/media/admin.jpeg": "/static/media/admin.d0b8e25e172cd021a4f9.jpeg",
+    "static/media/notfound.jpeg": "/static/media/notfound.c16c0e2e86b79db77d7e.jpeg",
+    "static/media/jssaten.jpeg": "/static/media/jssaten.c8fb88034be3ca16a71d.jpeg",
+    "static/media/feedback.jpeg": "/static/media/feedback.4f8a77fc6b8be9754905.jpeg",
+    "static/media/marks.jpeg": "/static/media/marks.ce075c3c0117f34cb828.jpeg",
+    "static/media/fees.jpeg": "/static/media/fees.2b52d149079bb40296ff.jpeg",
+    "static/media/eduportal.jpeg": "/static/media/eduportal.6c71fa5f9ee391195435.jpeg",
+    "static/media/attandance.jpeg": "/static/media/attandance.c8f67806308107b94efa.jpeg",
+    "static/media/designlogin.jpg": "/static/media/designlogin.3cac939f195a9e698ba4.jpg",
+    "static/media/form.jpeg": "/static/media/form.732231ac0bdbf88882f1.jpeg",
+    "index.html": "/index.html",
+    "main.7e73dc60.css.map": "/static/css/main.7e73dc60.css.map",
+    "main.606fc771.js.map": "/static/js/main.606fc771.js.map",
+    "453.d855a71b.chunk.js.map": "/static/js/453.d855a71b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7e73dc60.css",
+    "static/js/main.606fc771.js"
+  ]
+}

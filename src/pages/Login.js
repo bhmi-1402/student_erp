@@ -27,8 +27,6 @@ import axios from "axios";
 import path from "./../path";
 import { useDispatch, useSelector } from "react-redux";
 import { addUser } from "../store/userSlice";
-// import { useNavigate } from "react-router-dom";
-import { Progress } from "antd";
 
 const defaultTheme = createTheme();
 
@@ -169,9 +167,6 @@ const LoginPage = () => {
                 variant="contained"
                 sx={{ mt: 3 }}
               >
-                {/* {loader ?
-                                    <CircularProgress size={24} color="inherit" />
-                                    : "Login"} */}
                 Login
               </LightPurpleButton>
               <Button

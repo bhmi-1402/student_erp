@@ -52,7 +52,8 @@ const AdminForm = () => {
     if (!data.password) tempErrors.password = "Password is required";
     if (!data.RollNumber) tempErrors.RollNumber = "Roll Number is required";
     if (!data.class) tempErrors.class = "Class is required";
-    if (!data.currentSemester) tempErrors.currentSemester = "Current Semester is required";
+    if (!data.currentSemester)
+      tempErrors.currentSemester = "Current Semester is required";
     if (!data.Gender) tempErrors.Gender = "Gender is required";
     if (!data.PhoneNumber) tempErrors.PhoneNumber = "Phone Number is required";
     if (!data.Address) tempErrors.Address = "Address is required";
@@ -192,6 +193,7 @@ const AdminForm = () => {
           helperText={errors.DateOfBirth}
         ></TextField>
         <div>
+          <div></div>
           <Button variant="contained" disabled={load} onClick={handleSubmit}>
             Add Student
           </Button>

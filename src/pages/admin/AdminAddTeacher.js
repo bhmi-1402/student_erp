@@ -56,10 +56,10 @@ const AdminTeacher = () => {
   const validateLecture = () => {
     let tempLectureErrors = {};
     if (!lecture.Branch || lecture.Branch.length === 0) tempLectureErrors.Branch = "Branch is required";
-    if (!lecture.Semester) tempLectureErrors.Semester = "Semester is required";
     if (!lecture.Subject) tempLectureErrors.Subject = "Subject is required";
     setLectureErrors(tempLectureErrors);
-    return Object.keys(tempLectureErrors).length === 0;
+    console.log(Object.keys(tempLectureErrors))
+    return Object.keys(tempLectureErrors).length == 0;
   };
 
   const handleSubmit = async () => {
@@ -112,6 +112,8 @@ const AdminTeacher = () => {
         Subject: {},
       });
       setLectureErrors({});
+    }else{
+
     }
   };
 
