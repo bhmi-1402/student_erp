@@ -11,14 +11,14 @@ import Login from "./pages/Login.js";
 // import Present from './pages/Present.js';
 import StudentAttendance from "./pages/student/StudentAttendence.js";
 import StudentProfile from "./pages/student/StudentProfile";
-import StudentSideBar from "./pages/student/StudentSideBar";
-import StudentSubjects from "./pages/student/StudentSubjects";
+
+// import StudentSubjects from "./pages/student/StudentSubjects";
 import TeacherProfile from "./pages/teacher/TeacherProfile.js";
-import TeacherSideBar from "./pages/teacher/TeacherSideBar.js";
+// import TeacherSideBar from "./pages/teacher/TeacherSideBar.js";
 import path from "./path.js";
-import AdminForm from "./pages/admin/AdminForm.js";
+import AdminForm from "./pages/admin/AdminAddStudent.js";
 import AdminAddClass from "./pages/admin/AdminAddClass.js";
-import AdminTeacher from "./pages/admin/AdminTeacher.js";
+import AdminTeacher from "./pages/admin/AdminAddTeacher.js";
 import TeacherAttendance from "./pages/teacher/TeacherAttendance.js";
 import Modal from "./components/common/Modal.js";
 import StudentDashboard from "./pages/student/StudentDashboard.js";
@@ -69,10 +69,10 @@ function App() {
 
 
         {/* Remaining For Evalutaion */}
-        <Route path="/StudentSidebar" element={<StudentSideBar />}></Route>
-        <Route path="/StudentSubjects" element={<StudentSubjects />}></Route>
+        {/* <Route path="/StudentSidebar" element={<StudentSideBar />}></Route> */}
+        {/* <Route path="/StudentSubjects" element={<StudentSubjects />}></Route> */}
         <Route path="/StudentProfile" element={<StudentProfile />}></Route>
-        <Route path="/TeacherSideBar" element={<TeacherSideBar />}></Route>
+        {/* <Route path="/TeacherSideBar" element={<TeacherSideBar />}></Route> */}
         <Route path="/TeacherProfile" element={<TeacherProfile />}></Route>
 
       </Routes>

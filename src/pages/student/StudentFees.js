@@ -1,4 +1,4 @@
-import { Input } from 'keep-react';
+
 import Strip from '../../components/common/Strip';
 import './Student.css';
 import { useState } from 'react';

@@ -9,7 +9,7 @@ const Footer = () => {
           <div className="max-w-2xl mx-auto text-white py-10">
             <div className="text-center">
               <h3 className="text-3xl mb-3">Your Student ERP Portal</h3>
-              <p>Project made by (Contributers)</p>
+              <p>Project made by (Contributors)</p>
               <div className="flex justify-center my-10">
                 <div className="flex items-center border w-auto rounded-lg px-4 py-2 w-52 mx-2">
                   <img
