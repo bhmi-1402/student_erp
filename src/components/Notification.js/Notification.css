@@ -35,16 +35,23 @@
 }
 .table-row{
     border-bottom: 1px solid whitesmoke;
+    margin-bottom: 2px;
+    border-bottom: 1px solid lightgray;
 }
 .table-row>*{
     display: flex;
+
     flex-wrap: wrap;
     align-items: center;
 }
-
+.table-row > p {
+    display: flex;
+    justify-content: start;
+    align-items: start;
+    flex-direction: column;
+}
 .table-row span{
     font-weight: 600;
-    margin-left:6px;
 }
 .unseen{
     background-color: aliceblue;

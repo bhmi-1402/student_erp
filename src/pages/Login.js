@@ -150,11 +150,11 @@ const LoginPage = () => {
                 container
                 sx={{ display: "flex", justifyContent: "space-between" }}
               >
-                <FormControlLabel
+                {/* <FormControlLabel
                   control={<Checkbox value="remember" color="primary" />}
                   label="Remember me"
-                />
-                <StyledLink href="#">Forgot password?</StyledLink>
+                /> */}
+                {/* <StyledLink href="#">Forgot password?</StyledLink> */}
               </Grid>
 
               <LightPurpleButton
@@ -178,10 +178,10 @@ const LoginPage = () => {
               </Button>
 
               <Grid container>
-                <Grid>Don't have an account?</Grid>
-                <Grid item sx={{ ml: 2 }}>
+                {/* <Grid>Don't have an account?</Grid> */}
+                {/* <Grid item sx={{ ml: 2 }}>
                   <StyledLink to="/Adminregister">Sign up</StyledLink>
-                </Grid>
+                </Grid> */}
               </Grid>
             </Box>
           </Box>

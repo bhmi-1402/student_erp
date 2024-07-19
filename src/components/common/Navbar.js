@@ -4,21 +4,22 @@ import { LogoutRounded } from "@mui/icons-material";
 import { Disclosure, Menu, Transition } from "@headlessui/react";
 import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import logo from "../../assets/eduportal.jpeg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Modal from "./Modal";
+import {useDispatch} from 'react-redux';
+import {removeUser} from './../../store/userSlice';
 
 const navigation = [
   { name: "Dashboard", href: "#", current: true },
-  //   { name: 'Team', href: '#', current: false },
-  //   { name: 'Projects', href: '#', current: false },
-  //   { name: 'Calendar', href: '#', current: false },
 ];
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function NavBar() {
+export default function NavBar(){
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const [showLogoutModal, setLogoutModal] = useState(false);
   return (
     <>
@@ -256,10 +257,17 @@ export default function NavBar() {
           confirmButtonText={"No"}
           leftButtonText={"Yes, I'm Sure"}
           leftButton={true}
+         
           leftButtonFunction={() =>{
+            dispatch(removeUser());
+            setLogoutModal(false);
+            navigate('/');
             localStorage.clear();
           }}
-          confirm={() => setLogoutModal(false)}
+          
+          confirm={() =>{
+            setLogoutModal(false)}
+          }
         ></Modal>
       ) : (
         ""

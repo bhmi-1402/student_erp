@@ -78,7 +78,6 @@ const NotificationPanel = () => {
               } else {
                 timeToshow = time.weeks().toFixed(0) + " weeks ago";
               }
-
               return (
                 <div
                   className={ele.isSeen ? "table-row" : "table-row unseen"}
@@ -87,18 +86,21 @@ const NotificationPanel = () => {
                     setCurrentNotification(ele);
                   }}
                 >
-                  <Avatar src={ele.profilePicture}></Avatar>
+                  <Avatar sx={{backgroundColor:"teal"}}>
+                    {
+                      ele?.Sender.FullName ? ele?.Sender.FullName[0] : "N"
+                    }
+                  </Avatar>
                   <p>
                     {" "}
+                    <span>
                     <Link to={``} className="username-link">
                       {ele.Sender?.FullName}
                     </Link>
-                    {" - "}
                     {ele.Title}
-                    {/* {ele.extra && <Link to={ele.link}> {" " + ele.extra}</Link>} */}
-                    {/* {!ele.isSeen && <span className="new-indicator"></span>} */}
+                    </span>
                     <span className="mx-2 text-gray-500">
-                      {ele.Body?.slice(0, 20)}
+                      {ele.Body?.slice(0, 60)}
                       {
                         ele.Body?.length > 20 ? "..." : ""
                       }
