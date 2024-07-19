@@ -2,7 +2,7 @@ import { Student } from 'phosphor-react';
 import '../Dashboard.css';
 import { useEffect } from 'react';
 import Strip from '../../components/common/Strip';
-import attendance_image from './../../assets/attandance.jpeg'
+import attendance_image from './../../assets/Attendence.jpeg'
 import marks_image from './../../assets/marks.jpeg'
 import fees_image from './../../assets/fees.jpeg'
 import feedback from './../../assets/feedback.jpeg'

@@ -2,9 +2,9 @@ import { Student } from 'phosphor-react';
 import '../Dashboard.css';
 import { useEffect } from 'react';
 import Strip from '../../components/common/Strip';
-import attendance_image from './../../assets/attandance.jpeg'
-import marks_image from './../../assets/marks.jpeg'
-import fees_image from './../../assets/fees.jpeg'
+import attendance_image from './../../assets/Attendence.jpeg'
+import marks_image from './../../assets/Add marks.jpeg'
+import Complaints from './../../assets/Complaints.jpeg'
 import feedback from './../../assets/feedback.jpeg'
 import form from './../../assets/form.jpeg'
 import { Link } from 'react-router-dom';
@@ -25,13 +25,13 @@ const TeacherDashboard = ()=>{
                 </Link>
                 <Link className='dashboard-item' to='/teacher/add_marks'>
                     <img
-                        src={attendance_image}
+                        src={marks_image}
                     ></img>
                     <p>Add Marks</p>
                 </Link>
                 <Link className='dashboard-item' to={"/student/register_complaint"}>
                     <img
-                        src={attendance_image}
+                        src={Complaints}
                     ></img>
                     <p>Grievence</p>
                 </Link>
