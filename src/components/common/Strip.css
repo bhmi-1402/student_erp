@@ -9,12 +9,17 @@
 }
 
 .home-strip-left{
-
     display: flex;
     flex-direction: row;
     padding-left: 50px;
     align-items: center;
     gap: 20px;
+}
+.home-strip-left-image{
+    border-radius: 10px;
+}
+.home-strip-left-image > img {
+    border-radius: 10px;
 }
 .home-strip-right{
     display: flex;
@@ -25,6 +30,7 @@
 }
 .home-strip-right-image > img{
     max-height: 90px;
+    border-radius: 10px;
 }
 .home-strip-right > *{
     max-height: 90px;

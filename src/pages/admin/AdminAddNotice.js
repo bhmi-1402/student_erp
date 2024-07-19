@@ -4,10 +4,11 @@ import { useState } from "react";
 import data from './../teacher/teacherDemo.json'
 import axios from "axios";
 import path from "../../path";
+import { useSelector } from "react-redux";
 
 const AdminAddNotice = () => {
   const [load, setLoad] = useState(false);
-  const [user,setUser] = useState(data);
+  const user = useSelector(state => state.user.data);
 
   const [Title,setTitle] = useState("");
   const [Body,setBody] = useState("");
@@ -19,8 +20,8 @@ const AdminAddNotice = () => {
           Title,
           Body,
           Sender : {
-            _id : user._id,
-            FullName : user.FullName
+            _id : user?._id,
+            FullName : user?.FullName
           }
         })
 
@@ -45,8 +46,8 @@ const AdminAddNotice = () => {
             sx={{ width: "50px", height: "50px", bgcolor: "teal" }}
           ></Avatar>
           <div>
-            <p>Naveen Chaudhary</p>
-            <span>username jssaten</span>
+            <p>{user?.FullName}</p>
+            <span>{user?.Email}</span>
           </div>
         </div>
       </div>

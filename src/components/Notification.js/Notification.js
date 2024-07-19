@@ -88,7 +88,7 @@ const NotificationPanel = () => {
                 >
                   <Avatar sx={{backgroundColor:"teal"}}>
                     {
-                      ele?.Sender.FullName ? ele?.Sender.FullName[0] : "N"
+                      ele?.Sender?.FullName ? ele?.Sender.FullName[0] : "N"
                     }
                   </Avatar>
                   <p>

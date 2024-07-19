@@ -57,6 +57,7 @@ const LoginPage = () => {
           console.log(response)
           if(response.data.success){
             dispatch(addUser(response.data.user));
+            navigate('/');
           }
         }else{
           const response = await axios.post(path+'student/login',{Email,Password});
@@ -72,6 +73,29 @@ const LoginPage = () => {
       setLoad(false);
   }
 
+  const guestLogin = async ()=>{
+    setLoad(true);
+      try{
+        if(UserType == 'admin' || UserType == 'teacher'){
+          const response = await axios.get(path+'teacher/login/guest');
+          console.log(response)
+          if(response.data.success){
+            dispatch(addUser(response.data.user));
+            navigate('/');
+          }
+        }else{
+          const response = await axios.get(path+'student/login/guest');
+          if(response.data.success){
+            dispatch(addUser(response.data.user));
+            navigate('/');
+          }
+          console.log(response)
+        }
+      }catch(err){
+        console.log(err);
+      }
+      setLoad(false);
+  }
   return (
     <ThemeProvider theme={defaultTheme}>
       {
@@ -172,6 +196,7 @@ const LoginPage = () => {
               <Button
                 fullWidth
                 variant="outlined"
+                onClick={guestLogin}
                 sx={{ mt: 2, mb: 3, color: "#7f56da", borderColor: "#7f56da" }}
               >
                 Login as Guest
