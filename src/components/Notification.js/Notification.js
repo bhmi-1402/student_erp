@@ -11,11 +11,10 @@ import { CatchingPokemon } from "@mui/icons-material";
 
 const sampleNotificationData = [
   {
-    createdAt: new Date(),
-    isSeen: true,
-    username: "naveen12venom",
-    msg: "topic if the notice",
-    extra: "by this one",
+  Sender : {
+    FullName : "Naveen"
+  },
+  Title : "Welcome to StudentPRO"
   },
 ];
 

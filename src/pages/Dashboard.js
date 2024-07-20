@@ -81,7 +81,7 @@ export default ChooseUser;
 
 const StyledContainer = styled.div`
   background: white;
-  height: 80vh;
+  min-height: 80vh;
   display: flex;
   justify-content: center;
   padding: 2rem;

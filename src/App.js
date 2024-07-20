@@ -104,6 +104,8 @@ function App() {
                       path="/admin/complaints"
                       element={<AdminComplaints></AdminComplaints>}
                     ></Route>
+                    <Route path="/teacher/register_complaint" element={<StudentAddComplaint />}>
+                    </Route>
                   </>
                 ) : (
                   <>
@@ -111,7 +113,8 @@ function App() {
                       path="/dashboard/teacher"
                       element={<TeacherDashboard></TeacherDashboard>}
                     ></Route>
-
+                    <Route path="/teacher/register_complaint" element={<StudentAddComplaint />}>
+                    </Route>
                     <Route
                       path="/teacher/attendance"
                       element={<TeacherAttendance></TeacherAttendance>}

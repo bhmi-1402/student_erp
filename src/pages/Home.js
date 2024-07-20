@@ -2,16 +2,15 @@ import React from "react";
 import "./Home.css";
 import { Link } from "react-router-dom";
 import { Login } from "@mui/icons-material";
-import Students from "../assets/school-software.png";
 import { useSelector } from "react-redux";
-
+import Title from './../assets/TitleImage2.jpeg'
 const LandingPage = () => {
   const user = useSelector(state=>state.user.data)
   return (
     <>
       <div className="home-container">
         <div className="home-left">
-          <img src={Students}></img>
+          <img src={Title}></img>
         </div>
         <div className="home-right">
           <h1>

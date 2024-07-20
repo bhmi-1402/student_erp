@@ -1,5 +1,3 @@
-import './../../components/Notification.js/Notification.css';
-
 import "./../../components/Notification.js/Notification.css";
 import { Avatar, Button } from "@mui/material";
 import axios from "axios";
@@ -9,31 +7,39 @@ import { useSelector } from "react-redux";
 import { Link, matchRoutes } from "react-router-dom";
 import DateDiff from "date-diff";
 import CustomPopup from "../../components/common/CustomPopup";
+import { CatchingPokemon } from "@mui/icons-material";
 
-const sampleNotificationData = [{
-    createdAt : new Date(),
-    isSeen : true,
-    username : "naveen12venom",
-    msg:"topic if the notice",
-    extra : "by this one"
-}];
+const sampleNotificationData = [
+  {
+    createdAt: new Date(),
+    isSeen: true,
+    username: "naveen12venom",
+    msg: "topic if the notice",
+    extra: "by this one",
+  },
+];
 
-const AdminComplaints = () => {
+const NotificationPanel = () => {
   const [notifications, setNotifications] = useState(sampleNotificationData);
-  const [showPopup,setShowPopup] = useState(false);
+  const [showPopup, setShowPopup] = useState(false);
+  const [currentNotification,setCurrentNotification] = useState({});
   const user = useSelector((s) => s.user);
 
   const getNotifications = async () => {
-   
+    try {
+      const response = await axios.get(path + "admin/complaints");
+      if (response.data) {
+        setNotifications(response.data);
+      }
+    } catch (err) {}
   };
 
-  const markedAsSeen = async ()=>{
-    try{
-   
-    }catch(err){
+  const markedAsSeen = async () => {
+    try {
+    } catch (err) {
       console.log(err);
     }
-  }
+  };
 
   useEffect(() => {
     getNotifications();
@@ -41,10 +47,15 @@ const AdminComplaints = () => {
 
   return (
     <div className="notification-panel">
-      {
-        showPopup && <CustomPopup close={()=>setShowPopup(false)}></CustomPopup>
-      }
-      <div className="panel-heading"><p>Student Complaints</p> <button onClick={markedAsSeen} variant="outlined">Marked as Seen</button></div>
+      {showPopup && (
+        <CustomPopup data={currentNotification} close={() => setShowPopup(false)}></CustomPopup>
+      )}
+      <div className="panel-heading">
+        <p>Notifications</p>{" "}
+        <button onClick={markedAsSeen} variant="outlined">
+          Marked as Seen
+        </button>
+      </div>
       <div className="table">
         <div className="table-head">
           <p>User</p>
@@ -67,21 +78,33 @@ const AdminComplaints = () => {
               } else {
                 timeToshow = time.weeks().toFixed(0) + " weeks ago";
               }
-
               return (
-                <div className={ele.isSeen ? "table-row" : "table-row unseen"} onClick={()=>setShowPopup(true)}>
-                  <Avatar src={ele.profilePicture}></Avatar>
+                <div
+                  className={ele.isSeen ? "table-row" : "table-row unseen"}
+                  onClick={() => {
+                    setShowPopup(true)
+                    setCurrentNotification(ele);
+                  }}
+                >
+                  <Avatar sx={{backgroundColor:"teal"}}>
+                    {
+                      ele?.Sender?.FullName ? ele?.Sender.FullName[0] : "N"
+                    }
+                  </Avatar>
                   <p>
                     {" "}
-                    <Link
-                      to={``}
-                      className="username-link"
-                    >
-                      {ele.username}
-                    </Link>{" "}
-                    {ele.msg}
-                    {/* {ele.extra && <Link to={ele.link}> {" " + ele.extra}</Link>} */}
-                    {!ele.isSeen && <span className="new-indicator"></span>}
+                    <span>
+                    <Link to={``} className="username-link">
+                      {ele.Sender?.FullName}
+                    </Link>
+                    {ele.Title}
+                    </span>
+                    <span className="mx-2 text-gray-500">
+                      {ele.Body?.slice(0, 60)}
+                      {
+                        ele.Body?.length > 20 ? "..." : ""
+                      }
+                    </span>
                   </p>
                   <p className="time">{timeToshow}</p>
                 </div>
@@ -96,6 +119,4 @@ const AdminComplaints = () => {
   );
 };
 
-export default AdminComplaints;
-
-
+export default NotificationPanel;
