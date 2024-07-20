@@ -25,6 +25,7 @@ const TeacherAddMarks = () => {
   // const [teacherUser, setTeacherUser] = useState(demoTeacher);
   const teacherUser = useSelector(s=>s.user.data);
   const [branch, setBranch] = useState({});
+  const [load,setLoad] = useState(false);
   const [Lectures, setLectures] = useState([]);
   const [TotalMarks,setTotalMarks] = useState(100);
   const [isLectureDisables, setLectureDisabled] = useState(false);
@@ -52,6 +53,7 @@ const TeacherAddMarks = () => {
   // },[branch,Lectures]);
 
   const FetchStudent = async (lec)=>{
+    setLoad(true);
     try{
       setBranch(lec)
       console.log(lec);
@@ -64,6 +66,7 @@ const TeacherAddMarks = () => {
     }catch(err){
       console.log(err);
     }
+    setLoad(false);
   }
 
   const changeMarks = (event,index)=>{
@@ -73,7 +76,7 @@ const TeacherAddMarks = () => {
   }
 
   const handleSubmit = async () => {
-    // console.log(present);
+    setLoad(true);
     try{
       const response = await axios.post(path+'teacher/addResult',{
       Students : students,
@@ -93,6 +96,7 @@ const TeacherAddMarks = () => {
     }catch(err){
       console.log(err);
     }
+    setLoad(false);
   };
 
   return (
@@ -104,6 +108,9 @@ const TeacherAddMarks = () => {
         <span className="my-2 text-red-400">Default Score will be Zero</span>
       </div>
       <div className="attendance-container">
+        {
+          load && <LinearProgress className="progress"></LinearProgress>
+        }
         <div className="attendance-left-bar">
           <p>Select Semester</p>
           <FormControl>
@@ -166,9 +173,12 @@ const TeacherAddMarks = () => {
 
           <div className="flex justify-center py-2 my-2 flex-col items-center gap-10">
             {/* <p>Present Student  <strong>{present?.length}</strong> out of  <strong>{students?.length}</strong></p> */}
-            <Button variant="contained" onClick={handleSubmit}>
+            {
+              students.length ? 
+              <Button variant="contained" onClick={handleSubmit}>
               Submit Marks
             </Button>
+            : <span className="text-red-400">*No students data to show, Try selecting Class</span>} 
           </div>
         </div>
       </div>

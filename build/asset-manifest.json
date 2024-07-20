@@ -1,28 +1,37 @@
 {
   "files": {
-    "main.css": "/static/css/main.7e73dc60.css",
-    "main.js": "/static/js/main.606fc771.js",
+    "main.css": "/static/css/main.37353417.css",
+    "main.js": "/static/js/main.f46b51b6.js",
     "static/js/453.d855a71b.chunk.js": "/static/js/453.d855a71b.chunk.js",
+    "static/media/TitleImage2.jpeg": "/static/media/TitleImage2.22069f6addd30697c2bf.jpeg",
     "static/media/school-software.png": "/static/media/school-software.ba6ef5dc71a09fc1b21f.png",
+    "static/media/Attendence.jpeg": "/static/media/Attendence.01e279ad982b0695166b.jpeg",
+    "static/media/Complaints.jpeg": "/static/media/Complaints.21e4a0b09f6c13deeb71.jpeg",
+    "static/media/Add Teacher.jpeg": "/static/media/Add Teacher.d4bfc33cabfc704540d0.jpeg",
+    "static/media/Add Class.jpeg": "/static/media/Add Class.23a90bee6fb616e4e54c.jpeg",
     "static/media/teacher.jpeg": "/static/media/teacher.08fc5b33ae1a6c69979e.jpeg",
     "static/media/student.jpeg": "/static/media/student.0aa3666e267bd957bb53.jpeg",
     "static/media/admin.jpeg": "/static/media/admin.d0b8e25e172cd021a4f9.jpeg",
     "static/media/notfound.jpeg": "/static/media/notfound.c16c0e2e86b79db77d7e.jpeg",
+    "static/media/send notice.jpeg": "/static/media/send notice.d0d44614806e74d6eac4.jpeg",
     "static/media/jssaten.jpeg": "/static/media/jssaten.c8fb88034be3ca16a71d.jpeg",
     "static/media/feedback.jpeg": "/static/media/feedback.4f8a77fc6b8be9754905.jpeg",
+    "static/media/Add Students.jpeg": "/static/media/Add Students.7e120085ad69fcd92c42.jpeg",
     "static/media/marks.jpeg": "/static/media/marks.ce075c3c0117f34cb828.jpeg",
     "static/media/fees.jpeg": "/static/media/fees.2b52d149079bb40296ff.jpeg",
-    "static/media/eduportal.jpeg": "/static/media/eduportal.6c71fa5f9ee391195435.jpeg",
-    "static/media/attandance.jpeg": "/static/media/attandance.c8f67806308107b94efa.jpeg",
+    "static/media/Add marks.jpeg": "/static/media/Add marks.6a38bc092323451af3c9.jpeg",
     "static/media/designlogin.jpg": "/static/media/designlogin.3cac939f195a9e698ba4.jpg",
+    "static/media/female.jpeg": "/static/media/female.f8e977425741d0f0ee70.jpeg",
     "static/media/form.jpeg": "/static/media/form.732231ac0bdbf88882f1.jpeg",
+    "static/media/male.jpeg": "/static/media/male.8801b35f2efcabaa79ff.jpeg",
+    "static/media/eduportal.jpeg": "/static/media/eduportal.d976c7203f239ee4f56c.jpeg",
     "index.html": "/index.html",
-    "main.7e73dc60.css.map": "/static/css/main.7e73dc60.css.map",
-    "main.606fc771.js.map": "/static/js/main.606fc771.js.map",
+    "main.37353417.css.map": "/static/css/main.37353417.css.map",
+    "main.f46b51b6.js.map": "/static/js/main.f46b51b6.js.map",
     "453.d855a71b.chunk.js.map": "/static/js/453.d855a71b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7e73dc60.css",
-    "static/js/main.606fc771.js"
+    "static/css/main.37353417.css",
+    "static/js/main.f46b51b6.js"
   ]
 }

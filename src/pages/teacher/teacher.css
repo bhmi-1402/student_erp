@@ -87,3 +87,7 @@
         grid-template-columns: 1fr;
     }
 }
+.attendance-container > .progress{
+    grid-column-start: 1;
+    grid-column-end: 3;
+}

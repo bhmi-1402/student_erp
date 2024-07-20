@@ -29,7 +29,7 @@ const TeacherDashboard = ()=>{
                     ></img>
                     <p>Add Marks</p>
                 </Link>
-                <Link className='dashboard-item' to={"/student/register_complaint"}>
+                <Link className='dashboard-item' to={"/teacher/register_complaint"}>
                     <img
                         src={Complaints}
                     ></img>

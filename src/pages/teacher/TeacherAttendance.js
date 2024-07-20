@@ -33,6 +33,7 @@ const TeacherAttendance = () => {
   const [branch, setBranch] = useState({});
   const [Lectures, setLectures] = useState([]);
   const [present, setPresent] = useState([]);
+  const [load,setLoad] = useState(false);
   const [selectedSemester, setSelectedSemester] = useState(1);
 
   useEffect(() => {
@@ -53,6 +54,7 @@ const TeacherAttendance = () => {
   }, [selectedSemester]);
 
   const FetchStudent = async (lec)=>{
+    setLoad(true);
     try{
       setBranch(lec)
       console.log(lec);
@@ -65,6 +67,7 @@ const TeacherAttendance = () => {
     }catch(err){
       console.log(err);
     }
+    setLoad(false);
   }
 
   const handlePresent = (id) => {
@@ -81,6 +84,7 @@ const TeacherAttendance = () => {
   };
   
   const handleSubmit = async () => {
+    setLoad(true);
       try{
         const response = await axios.post(path+'teacher/markAttendance',{
           PresentStudents : present,
@@ -94,6 +98,7 @@ const TeacherAttendance = () => {
       }catch(err){
         console.log(err);
       }
+      setLoad(false);
   };
 
   const isPresent = (id) => {
@@ -109,6 +114,9 @@ const TeacherAttendance = () => {
             </span>
       </div>
       <div className="attendance-container">
+      {
+          load && <LinearProgress className="progress"></LinearProgress>
+        }
         <div className="attendance-left-bar">
         <p>Select Semester</p>
           <FormControl>
@@ -202,10 +210,14 @@ const TeacherAttendance = () => {
             </div>
           ))}
           <div className="flex justify-center py-2 my-2 flex-col items-center gap-10">
+            {
+              students.length ? <>
             <p>Present Student  <strong>{present?.length}</strong> out of  <strong>{students?.length}</strong></p>
             <Button variant="contained" onClick={handleSubmit}>
               Submit Attendence
             </Button>
+            </> : "No students to show . Please try selecting Class"
+            }
           </div>
         </div>
       </div>
