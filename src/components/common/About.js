@@ -1,13 +1,20 @@
 import "./About.css";
+import nodejs from "./../../assets/nodejs.jpg"
+import express from "./../../assets/express.jpeg"
+import react from "./../../assets/reactjs.png"
+import mongo from "./../../assets/mongodb.jpeg"
+import redux from "./../../assets/redux.png"
+
+
 const backend_technologies = [
   {
     name: "NodeJS",
-    image_url: "#",
+    image_url: nodejs,
     details: "Used to create server and to listen APIs.",
   },
   {
     name: "ExpressJS",
-    image_url: "#",
+    image_url: express,
     details: "Used to create server and to listen APIs.",
   },
 ];
@@ -15,17 +22,17 @@ const backend_technologies = [
 const frontend_technologies = [
   {
     name: "ReactJS",
-    image_url: "#",
+    image_url: react,
     details: "Used to create server and to listen APIs.",
   },
   {
-    name: "Axios",
-    image_url: "#",
+    name: "MongoDB",
+    image_url: mongo,
     details: "Used to create server and to listen APIs.",
   },
   {
     name: "Redux",
-    image_url: "#",
+    image_url: redux,
     details: "Used to create server and to listen APIs.",
   },
 ];
@@ -37,8 +44,9 @@ const About = () => {
           <h1>Project Details</h1>
           <span>Our Motive</span>
           <p>
-            lorem asinrf anfiuan anfosn afjs aofio afsknet afas etfa afs
-            aasfafedaeagf fds adfdasg ae efsda sadefe gsdfenfjdks efwfsdf
+          Developed an innovative web application using Node.js,
+           Express.js, React.js, and Materialize CSS, leveraging MongoDB for 
+           data management .
           </p>
         </div>
         <div className="about-beta">
