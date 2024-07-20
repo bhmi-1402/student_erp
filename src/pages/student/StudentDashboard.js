@@ -45,7 +45,7 @@ const StudentDashboard = ()=>{
                     <img
                         src={form}
                     ></img>
-                    <p>Grievence</p>
+                    <p>Grievance</p>
                 </Link>
         </div>
     </>;

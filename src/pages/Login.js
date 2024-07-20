@@ -120,31 +120,7 @@ const LoginPage = () => {
               Welcome back! Please enter your details
             </Typography>
             <Box component="form" noValidate sx={{ mt: 2 }}>
-              <>
-                {/* <TextField
-                                        margin="normal"
-                                        required
-                                        fullWidth
-                                        id="rollNumber"
-                                        label="Enter your Roll Number"
-                                        name="rollNumber"
-                                        autoComplete="off"
-                                        type="number"
-                                        autoFocus
-                                        
-                                    /> */}
-                {/* <TextField
-                                        margin="normal"
-                                        required
-                                        fullWidth
-                                        id="studentName"
-                                        label="Enter your name"
-                                        name="studentName"
-                                        autoComplete="name"
-                                        autoFocus
-                                       
-                                    /> */}
-              </>
+             
 
               <TextField
                 margin="normal"
@@ -174,11 +150,7 @@ const LoginPage = () => {
                 container
                 sx={{ display: "flex", justifyContent: "space-between" }}
               >
-                {/* <FormControlLabel
-                  control={<Checkbox value="remember" color="primary" />}
-                  label="Remember me"
-                /> */}
-                {/* <StyledLink href="#">Forgot password?</StyledLink> */}
+               
               </Grid>
 
               <LightPurpleButton
@@ -202,12 +174,6 @@ const LoginPage = () => {
                 Login as Guest
               </Button>
 
-              <Grid container>
-                {/* <Grid>Don't have an account?</Grid> */}
-                {/* <Grid item sx={{ ml: 2 }}>
-                  <StyledLink to="/Adminregister">Sign up</StyledLink>
-                </Grid> */}
-              </Grid>
             </Box>
           </Box>
         </Grid>
@@ -229,7 +195,7 @@ const LoginPage = () => {
         <CircularProgress color="primary" />
         Please Wait
       </Backdrop>
-      {/* <Popup message={message} setShowPopup={setShowPopup} showPopup={showPopup} /> */}
+      
     </ThemeProvider>
   );
 };
