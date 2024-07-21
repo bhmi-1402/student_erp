@@ -91,6 +91,7 @@ const TeacherAttendance = () => {
           Semester : branch.Branch.Semester,
           SubjectId : branch.Subject._id,
           SubjectName : branch.Subject.Name,
+          SubjectAlias : branch.Subject?.Alias,
           TeacherId : teacherUser._id,
           BranchName : branch.Branch.Name,
           BranchID : branch.Branch._id

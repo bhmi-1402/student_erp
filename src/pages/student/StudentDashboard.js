@@ -35,17 +35,17 @@ const StudentDashboard = ()=>{
                     ></img>
                     <p>Fees</p>
                 </Link>
-                <div className='dashboard-item'>
+                {/* <div className='dashboard-item'>
                     <img
                         src={feedback}
                     ></img>
                     <p>Feedback</p>
-                </div>
+                </div> */}
                 <Link className='dashboard-item' to={"/student/register_complaint"}>
                     <img
                         src={form}
                     ></img>
-                    <p>Grievance</p>
+                    <p>Feedback</p>
                 </Link>
         </div>
     </>;

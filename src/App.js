@@ -131,7 +131,7 @@ function App() {
         ) : (
           ""
         )}
-        <Route path="/*" element={<NotFound></NotFound>}></Route>
+        <Route path="/:error" element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>
     </div>

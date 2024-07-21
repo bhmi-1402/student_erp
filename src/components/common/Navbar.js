@@ -10,7 +10,7 @@ import {useDispatch} from 'react-redux';
 import {removeUser} from './../../store/userSlice';
 import male from '../../assets/male.jpeg'
 const navigation = [
-  { name: "Dashboard", href: "#", current: true },
+  // { name: "Dashboard", href: "#", current: true },
 ];
 
 function classNames(...classes) {
@@ -48,10 +48,14 @@ export default function NavBar(){
                         src={logo}
                         alt="Your Company"
                       />
+                      <p className="logo-text">
+                        <span className="logo-text-first">Student</span>
+                        <span className="logo-text-second">PRO</span>
+                      </p>
                     </div>
                   </a>
 
-                  <div className="hidden sm:ml-6 sm:block">
+                  {/* <div className="hidden sm:ml-6 sm:block">
                     <div className="flex space-x-4">
                       {navigation.map((item) => (
                         <Menu as="a" className="relative ml-3">
@@ -140,11 +144,13 @@ export default function NavBar(){
                           About
                         </a>
                       </div>
+
                     </div>
-                  </div>
+                  </div> */}
                 </div>
 
                 <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+                  
                   <Link
                     type="button"
                     to={"/notification"}

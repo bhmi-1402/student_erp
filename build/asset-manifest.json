@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/static/css/main.37353417.css",
-    "main.js": "/static/js/main.dc3960bd.js",
+    "main.css": "/static/css/main.9dd2e3f3.css",
+    "main.js": "/static/js/main.4f408022.js",
     "static/js/453.d855a71b.chunk.js": "/static/js/453.d855a71b.chunk.js",
     "static/media/TitleImage2.jpeg": "/static/media/TitleImage2.c0cb157256ecfb6c0bdd.jpeg",
     "static/media/teacher.jpeg": "/static/media/teacher.08fc5b33ae1a6c69979e.jpeg",
     "static/media/student.jpeg": "/static/media/student.0aa3666e267bd957bb53.jpeg",
     "static/media/admin.jpeg": "/static/media/admin.d0b8e25e172cd021a4f9.jpeg",
     "static/media/notfound.jpeg": "/static/media/notfound.c16c0e2e86b79db77d7e.jpeg",
+    "static/media/nodejs.jpg": "/static/media/nodejs.6776aa0068eed3cbb5bf.jpg",
     "static/media/jssaten.jpeg": "/static/media/jssaten.c8fb88034be3ca16a71d.jpeg",
     "static/media/Add Students.jpeg": "/static/media/Add Students.7e120085ad69fcd92c42.jpeg",
     "static/media/designlogin.jpg": "/static/media/designlogin.3cac939f195a9e698ba4.jpg",
@@ -19,12 +20,12 @@
     "static/media/Complaints.jpeg": "/static/media/Complaints.5ebd68ad001496111571.jpeg",
     "static/media/Add marks.jpeg": "/static/media/Add marks.6f10df8daa3713d31a24.jpeg",
     "index.html": "/index.html",
-    "main.37353417.css.map": "/static/css/main.37353417.css.map",
-    "main.dc3960bd.js.map": "/static/js/main.dc3960bd.js.map",
+    "main.9dd2e3f3.css.map": "/static/css/main.9dd2e3f3.css.map",
+    "main.4f408022.js.map": "/static/js/main.4f408022.js.map",
     "453.d855a71b.chunk.js.map": "/static/js/453.d855a71b.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.37353417.css",
-    "static/js/main.dc3960bd.js"
+    "static/css/main.9dd2e3f3.css",
+    "static/js/main.4f408022.js"
   ]
 }

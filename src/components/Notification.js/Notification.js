@@ -14,7 +14,8 @@ const sampleNotificationData = [
   Sender : {
     FullName : "Naveen"
   },
-  Title : "Welcome to StudentPRO"
+  Title : "Welcome to StudentPRO",
+  Body:"Here your one place to Find Everything."
   },
 ];
 
@@ -94,7 +95,7 @@ const NotificationPanel = () => {
                     {" "}
                     <span>
                     <Link to={``} className="username-link">
-                      {ele.Sender?.FullName}
+                      {ele.Sender?.FullName} : 
                     </Link>
                     {ele.Title}
                     </span>

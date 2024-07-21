@@ -80,6 +80,12 @@ const About = () => {
             })}
           </div>
         </div>
+        <div className="about-alpha mt-5">
+          <h1>Contributors</h1>
+          <p>
+              Naveen Chaudhary
+          </p>
+        </div>
         <div className="about-gemma"></div>
       </div>
     </>
