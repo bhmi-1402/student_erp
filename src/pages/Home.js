@@ -16,12 +16,13 @@ const LandingPage = () => {
           <h1>
             {" "}
             Welcome to
+            Student
+            <strong className="logo-text-second text-bold">
+            PRO
+            </strong>
            
-            ERP Management
-           
-            System
           </h1>
-          <p>
+          <p style={{textAlign:"center"}}>
             {" "}
             Streamline school management, class organization, and add students
             and faculty. Seamlessly track attendance, assess performance, and
@@ -37,13 +38,15 @@ const LandingPage = () => {
             Suggestion
           </p>
           <span></span>
+          <div className="center">
           {
             !user ?  <Link to={'/choose_user'}>
             <button>Login<Login></Login></button>
             </Link> :  <Link to={'/dashboard'}>
-          <button>Go To DashBoard</button>
+            <button>Go To DashBoard</button>
           </Link>
           }
+          </div>
         </div>
       </div>
     </>

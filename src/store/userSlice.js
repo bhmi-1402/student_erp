@@ -7,7 +7,7 @@ const userSlice = createSlice({
             state.data = action.payload;
         },
         removeUser : (state,action)=>{
-            state = {};
+            state.data = false;
         },
         changeName : (state,action)=>{
             state.name = action.payload;

@@ -30,9 +30,11 @@ const ChooseUser = () => {
   
   return (
     <StyledContainer>
-      <Container>
+      <Container className='column'>
+          <div className='dashbaord-choose-user-font'>
+            Choose User Type
+          </div>
         <Grid container spacing={2} justifyContent="center">
-            
           <Grid item xs={12} sm={6} md={4}>
             <div >
               <StyledPaper elevation={3}>
@@ -41,7 +43,9 @@ const ChooseUser = () => {
                     <img className='choose_user_image' src={admin_profile} ></img>
                 </div>
                 <StyledTypography>
+                  <strong>
                   Admin
+                  </strong>
                 </StyledTypography>
                 Login as an administrator to access the dashboard to manage app data.
                </Link>
@@ -56,7 +60,9 @@ const ChooseUser = () => {
                     <img className='choose_user_image' src={teacher_profile} ></img>
                 </div>
                 <StyledTypography>
+                  <strong>
                   Teacher
+                  </strong>
                 </StyledTypography>
                 Login as a teacher to create courses, assignments, and track student progress.
               </div>

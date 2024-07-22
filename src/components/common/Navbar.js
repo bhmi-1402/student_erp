@@ -6,7 +6,7 @@ import { Bars3Icon, BellIcon, XMarkIcon } from "@heroicons/react/24/outline";
 import logo from "../../assets/eduportal.jpeg";
 import { Link, useNavigate } from "react-router-dom";
 import Modal from "./Modal";
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {removeUser} from './../../store/userSlice';
 import male from '../../assets/male.jpeg'
 const navigation = [
@@ -19,6 +19,7 @@ function classNames(...classes) {
 
 export default function NavBar(){
   const dispatch = useDispatch();
+  const user = useSelector(state=>state.user.data);
   const navigate = useNavigate();
   const [showLogoutModal, setLogoutModal] = useState(false);
   return (
@@ -210,19 +211,24 @@ export default function NavBar(){
                             </a>
                           )}
                         </Menu.Item> */}
+                        {
+                          user &&
                         <Menu.Item>
                           {({ active }) => (
                             <a
-                              onClick={() => setLogoutModal(!showLogoutModal)}
-                              className={classNames(
-                                active ? "bg-gray-100" : "",
-                                "block px-4 py-2 text-sm text-gray-700"
+                            onClick={() => setLogoutModal(!showLogoutModal)}
+                            className={classNames(
+                              active ? "bg-gray-100" : "",
+                              "block px-4 py-2 text-sm text-gray-700"
                               )}
-                            >
+                              >
                               Sign out
                             </a>
                           )}
                         </Menu.Item>
+                        }
+
+
                       </Menu.Items>
                     </Transition>
                   </Menu>
@@ -269,6 +275,7 @@ export default function NavBar(){
             setLogoutModal(false);
             navigate('/');
             localStorage.clear();
+            window.location.reload();
           }}
 
           confirm={() =>{

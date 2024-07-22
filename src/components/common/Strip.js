@@ -17,7 +17,7 @@ const Strip = ()=>{
         </div>
         <div className='home-strip-right'>
             <div className='home-strip-right-image'>
-                    <img src={profilepic}></img>
+                    <img src={profilepic} className='h-[100px]'></img>
             </div>
             <div className='home-strip-right-text'>
                     <p>{user?.FullName}</p>

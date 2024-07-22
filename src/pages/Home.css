@@ -19,7 +19,8 @@
 .home-right > p {
   margin: 8px;
 }
-.home-right > a > button{
+
+.home-right button{
   min-width: 200px;
   width: max-content;
   height: 150x;
@@ -32,12 +33,20 @@
   align-self: center;
   border: 2px solid black;
 }
-.home-right > button :hover{
-  background-color: blueviolet;
+.home-right button :hover{
   color: white;
 }
+
 @media (width < 800px) {
   .home-container{
     grid-template-columns: 1fr;
   }
+}
+.dashbaord-choose-user-font{
+  /* border:1px solid red; */
+  text-align: center;
+  font-weight: 600;
+  /* border: 1px solid lightgray; */
+  font-size: 2rem;
+  margin-bottom: 20px;
 }

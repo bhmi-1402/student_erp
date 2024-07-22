@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate , Link, Navigate } from 'react-router-dom';
+import React, { useEffect, useState } from "react";
+import { useNavigate, Link, Navigate } from "react-router-dom";
 import {
   Grid,
   Paper,
@@ -7,70 +7,81 @@ import {
   Container,
   CircularProgress,
   Backdrop,
-  Avatar
-} from '@mui/material';
-import styled from 'styled-components';
-import admin_profile from './../assets/admin.jpeg'
-import student_profile from './../assets/student.jpeg'
-import teacher_profile from './../assets/teacher.jpeg'
+  Avatar,
+} from "@mui/material";
+import styled from "styled-components";
+import admin_profile from "./../assets/admin.jpeg";
+import student_profile from "./../assets/student.jpeg";
+import teacher_profile from "./../assets/teacher.jpeg";
 // import { useNavigate } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { useSelector } from "react-redux";
 const ChooseUser = () => {
-  
   return (
     <StyledContainer>
-      <Container>
+      <Container className="column">
+        <div className="dashbaord-choose-user-font">Choose User Type</div>
         <Grid container spacing={2} justifyContent="center">
           <Grid item xs={12} sm={6} md={4}>
-            <div >
+            <div>
               <StyledPaper elevation={3}>
-              <Link to="/login?user=admin">
-               <div className="flex justify-center items-center">
-                    <img className='choose_user_image' src={admin_profile} ></img>
-                </div>
-                <StyledTypography>
-                  Admin
-                </StyledTypography>
-                Login as an administrator to access the dashboard to manage app data.
-               </Link>
+                <Link to="/login?user=admin">
+                  <div className="flex justify-center items-center">
+                    <img
+                      className="choose_user_image"
+                      src={admin_profile}
+                    ></img>
+                  </div>
+                  <StyledTypography>
+                    <strong>Admin</strong>
+                  </StyledTypography>
+                  Login as an administrator to access the dashboard to manage
+                  app data.
+                </Link>
               </StyledPaper>
             </div>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
             <StyledPaper elevation={3}>
               <Link to="/login?user=student">
-              <div>
-                <div className="flex justify-center items-center">
-                    <img className='choose_user_image' src={student_profile} ></img>
+                <div>
+                  <div className="flex justify-center items-center">
+                    <img
+                      className="choose_user_image"
+                      src={student_profile}
+                    ></img>
+                  </div>
+                  <StyledTypography className="text-bold">
+                    <strong>Student</strong>
+                  </StyledTypography>
+                  Login as a student to explore course materials and
+                  assignments.
                 </div>
-                <StyledTypography className='text-bold'>
-                  Student
-                </StyledTypography>
-                Login as a student to explore course materials and assignments.
-              </div>
               </Link>
             </StyledPaper>
           </Grid>
           <Grid item xs={12} sm={6} md={4}>
             <StyledPaper elevation={3}>
-             <Link to="/login?user=teacher">
-              <div>
-              <div className="flex justify-center items-center">
-                    <img className='choose_user_image' src={teacher_profile} ></img>
+              <Link to="/login?user=teacher">
+                <div>
+                  <div className="flex justify-center items-center">
+                    <img
+                      className="choose_user_image"
+                      src={teacher_profile}
+                    ></img>
+                  </div>
+                  <StyledTypography>
+                    <strong>Teacher</strong>
+                  </StyledTypography>
+                  Login as a teacher to create courses, assignments, and track
+                  student progress.
                 </div>
-                <StyledTypography>
-                  Teacher
-                </StyledTypography>
-                Login as a teacher to create courses, assignments, and track student progress.
-              </div>
               </Link>
             </StyledPaper>
           </Grid>
         </Grid>
       </Container>
       <Backdrop
-        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
-      
+        sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 1 }}
       >
         <CircularProgress color="inherit" />
         Please Wait
@@ -84,7 +95,7 @@ export default ChooseUser;
 
 const StyledContainer = styled.div`
   background: white;
-    min-height: 80vh;
+  min-height: 80vh;
   display: flex;
   justify-content: center;
   padding: 2rem;
@@ -94,12 +105,12 @@ const StyledPaper = styled(Paper)`
   padding: 20px;
   text-align: center;
   background-color: #1f1f38;
-  color:rgba(255, 255, 255, 0.6);
-  cursor:pointer;
+  color: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
 
   &:hover {
     background-color: #2c2c6c;
-    color:white;
+    color: white;
   }
 `;
 
