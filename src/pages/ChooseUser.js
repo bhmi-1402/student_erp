@@ -19,7 +19,7 @@ const ChooseUser = () => {
   return (
     <StyledContainer>
       <Container className="column">
-        <div className="dashbaord-choose-user-font">Choose User Type</div>
+        <div className="dashbaord-choose-user-font">Choose Action</div>
         <Grid container spacing={2} justifyContent="center">
           <Grid item xs={12} sm={6} md={4}>
             <div>
@@ -32,10 +32,9 @@ const ChooseUser = () => {
                     ></img>
                   </div>
                   <StyledTypography>
-                    <strong>Admin</strong>
+                    <strong>New Account</strong>
                   </StyledTypography>
-                  Login as an administrator to access the dashboard to manage
-                  app data.
+                  Create a Fresh new Bank account
                 </Link>
               </StyledPaper>
             </div>
@@ -70,10 +69,9 @@ const ChooseUser = () => {
                     ></img>
                   </div>
                   <StyledTypography>
-                    <strong>Teacher</strong>
+                    <strong>Login Account</strong>
                   </StyledTypography>
-                  Login as a teacher to create courses, assignments, and track
-                  student progress.
+                  Login to access old account
                 </div>
               </Link>
             </StyledPaper>

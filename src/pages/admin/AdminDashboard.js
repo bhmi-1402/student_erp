@@ -18,31 +18,31 @@ const AdminDashboard = ()=>{
                     <img
                         src={Add_Student}
                     ></img>
-                    <p>Add Student</p>
+                    <p>Deposit Money</p>
                 </Link>
                 <Link className='dashboard-item' to='/admin/add_Teacher'>
                     <img
                         src={teacher}
                     ></img>
-                    <p>Add Teacher</p>
+                    <p>Withdraw Money</p>
                 </Link>
                 <Link className='dashboard-item' to='/admin/add_class'>
                     <img
                         src={Class}
                     ></img>
-                    <p>Add Class</p>
+                    <p>Transaction History</p>
                 </Link>
                 <Link className='dashboard-item' to='/admin/send_notification'>
                     <img
                         src={notice}
                     ></img>
-                    <p>Send Notice</p>
+                    <p>Request Loan</p>
                 </Link>
                 <Link className='dashboard-item' to='/admin/complaints'>
                     <img
                         src={Complaints}
                     ></img>
-                    <p>Complaints</p>
+                    <p>Check Balance</p>
                 </Link>
         </div>
     </>;

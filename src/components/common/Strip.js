@@ -11,8 +11,8 @@ const Strip = ()=>{
                     <img className={"h-[100px]"} src={logo}></img>
             </div>
             <div className='home-strip-right-text'>
-                 <p>Edu-Matrix</p>
-                 <span>A Student ERP Portal</span>
+                 <p>Bank-Matrix</p>
+                 <span>A Bank Support System Project by Praveen Chaudhary</span>
             </div>
         </div>
         <div className='home-strip-right'>

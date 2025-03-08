@@ -50,7 +50,7 @@ export default function NavBar(){
                         alt="Your Company"
                       />
                       <p className="logo-text">
-                        <span className="logo-text-first">Student</span>
+                        <span className="logo-text-first">Bank</span>
                         <span className="logo-text-second">PRO</span>
                       </p>
                     </div>

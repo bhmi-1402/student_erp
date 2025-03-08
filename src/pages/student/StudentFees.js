@@ -28,16 +28,16 @@ const StudentFees = ()=>{
         className='fees-form'
         >
             <div className='fees-bio'>
-              <FeesBioField title={'Full Name'} value={'Naveen Chaudhary'}></FeesBioField>
-              <FeesBioField title={'Class'} value={'CSE'}></FeesBioField>
-              <FeesBioField title={'Roll Number'} value={'2100911540029'}></FeesBioField>
-              <FeesBioField title={'Semester'} value={'VI'}></FeesBioField>
-              <FeesBioField title={'Total Fees'} value={'119850'}></FeesBioField>
-              <FeesBioField title={'Paid Fees'} value={'99850'}></FeesBioField>
-              <FeesBioField title={'Remaining Fees'} value={'20000'}></FeesBioField>
+              <FeesBioField title={'Full Name'} value={'Praveen Chaudhary'}></FeesBioField>
+              <FeesBioField title={'Account type'} value={'Saving'}></FeesBioField>
+              <FeesBioField title={'Account Number'} value={'2100911540029'}></FeesBioField>
+              <FeesBioField title={'Age'} value={'20'}></FeesBioField>
+              <FeesBioField title={'Balance'} value={'119850'}></FeesBioField>
+              <FeesBioField title={'IFSC Code'} value={'99850'}></FeesBioField>
+              <FeesBioField title={'Branch'} value={'Bisawar Hathras'}></FeesBioField>
             </div>
             <div className='fees-container'>
-                <p>Enter Amount</p>
+                <p>Enter Amount to Deposit</p>
                 <input type="number" inputMode='numeric' className='number-input-venom' value={amount} onChange={feesValidator}></input>
                 <button className='button-venom'>Pay {amount}</button>
             </div>
